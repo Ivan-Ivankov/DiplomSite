@@ -1,0 +1,58 @@
+.about {
+  margin-bottom: 70px;
+}
+.about-content {
+  display: flex;
+  margin: auto;
+  max-width: 1040px;
+}
+.menu ul,
+.menu a {
+  color: #656565;
+  text-decoration: none;
+  list-style: none;
+}
+
+.menu li {
+  padding: 10px 40px 10px 10px;
+  border: 1px solid #dbdbdb;
+  margin-top: -1px;
+}
+
+.menu li:hover {
+  background-color: #f7f7f7;
+}
+
+.menu li:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.menu li:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 60px;
+}
+
+.content hr {
+  margin-left: 8px;
+  height: 2px;
+}
+
+.way {
+  margin-bottom: 20px;
+}
+
+.way a {
+  margin-right: 5px;
+  text-decoration: none;
+  color: #00a7cc;
+}
+
+.content-text li {
+  margin-left: 60px;
+}

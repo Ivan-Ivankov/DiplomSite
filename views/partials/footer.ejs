@@ -1,0 +1,69 @@
+<footer>
+  <section class="feedback">
+    <div class="feedback-content center">
+      <p class="semi-bold fs24">Есть вопросы?</p>
+      <p class="gray">Отправьте заявку и мы перезвоним в течении 30 минут.</p>
+      <hr />
+      <form class="feedback-form center" action="/feedback" method="post">
+        <div class="form-up center">
+          <input
+            type="text"
+            class="form-name"
+            name="name"
+            required
+            placeholder="Имя"
+          />
+          <input
+            type="text"
+            class="form-number"
+            name="number"
+            required
+            placeholder="Телефон"
+          />
+          <input
+            type="email"
+            class="form-email"
+            name="email"
+            required
+            placeholder="Email"
+          />
+        </div>
+        <div class="form-down center">
+          <textarea
+            name="textarea"
+            id=""
+            required
+            placeholder="Ваше сообщение..."
+          ></textarea>
+        </div>
+        <button class="btn" type="submit">Отправить</button>
+      </form>
+    </div>
+  </section>
+  <section class="map">
+    <div class="map-content center">
+      <p class="semi-bold fs24">Наш адрес</p>
+      <p class="gray">Ул. Какая-то, 8, офис 888</p>
+      <hr />
+      <div style="position: relative; overflow: hidden">
+        <a
+          href="https://yandex.ru/maps/969/vyborg/?utm_medium=mapframe&utm_source=maps"
+          style="color: #eee; font-size: 12px; position: absolute; top: 0px"
+          >Выборг</a
+        >
+        <a
+          href="https://yandex.ru/maps/969/vyborg/?ll=28.755983%2C60.707392&utm_medium=mapframe&utm_source=maps&z=15.8"
+          style="color: #eee; font-size: 12px; position: absolute; top: 14px"
+          >Выборг — Яндекс Карты</a
+        >
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?ll=28.755983%2C60.707392&z=15.8"
+          frameborder="1"
+          allowfullscreen="true"
+          style="position: relative"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+  <p class="center">Выборг-Монтаж © 2023 | Все права защищены</p>
+</footer>

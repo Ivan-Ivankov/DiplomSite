@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/main-index.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <%- include("./partials/header") -%>
+    <main> 
+      <section class="products">
+        <div class="products-content center">  
+        <div class="product">
+          <img src="img/Blocks.png" alt="" />
+          <p class="product-name semi-bold fs20">Бетоные блоки</p>
+          <p class="product-info gray">Описание продукции</p>
+          <a href="#"><button class="btn">Подробности</button></a>
+        </div>
+        <div class="product">
+          <img src="img/Zabor.png" alt="" />
+          <p class="product-name semi-bold fs20">Заборы</p>
+          <p class="product-info gray">Описание продукции</p>
+          <a href="#"><button class="btn">Подробности</button></a>
+        </div>
+        <div class="product">
+          <img src="img/Svai.png" alt="" />
+          <p class="product-name semi-bold fs20">Сваи</p>
+          <p class="product-info gray">Описание продукции</p>
+          <a href="#"><button class="btn">Подробности</button></a>
+        </div>
+        <div class="product">
+          <img src="img/Pliti.png" alt="" />
+          <p class="product-name semi-bold fs20">Плиты перекрытия</dp>
+          <p class="product-info gray">Описание продукции</p>
+          <a href="#"><button class="btn">Подробности</button></a>
+        </div>
+        <div class="product">
+          <img src="img/Borduri.png" alt="" />
+          <p class="product-name semi-bold fs20">Бордюры</p>
+          <p class="product-info gray">Описание продукции</p>
+          <a href="#"><button class="btn">Подробности</button></a>
+        </div>
+        <div class="product">
+          <img src="img/Kolca.png" alt="" />
+          <p class="product-name semi-bold fs20">Кольца</p>
+          <p class="product-info gray">Описание продукции</p>
+          <a href="#"><button class="btn">Подробности</button></a>
+        </div>
+      </div>
+      </section>
+      <section class="advantages">
+        <div class="advantages-content center">
+          <p class="semi-bold fs24">Наши преимущества</p>
+          <hr />
+          <div class="advantages-items">
+            <div class="advantages-item">
+              <svg
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M21,12.424V11A9,9,0,0,0,3,11v1.424A5,5,0,0,0,5,22a2,2,0,0,0,2-2V14a2,2,0,0,0-2-2V11a7,7,0,0,1,14,0v1a2,2,0,0,0-2,2v6H14a1,1,0,0,0,0,2h5a5,5,0,0,0,2-9.576ZM5,20H5a3,3,0,0,1,0-6Zm14,0V14a3,3,0,0,1,0,6Z"
+                />
+              </svg>
+              <p>Доступность</p>
+            </div>
+            <div class="advantages-item">
+              <svg
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12,6a4,4,0,1,0,4,4A4,4,0,0,0,12,6Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,12Z"
+                />
+                <path
+                  d="M12,24a5.271,5.271,0,0,1-4.311-2.2c-3.811-5.257-5.744-9.209-5.744-11.747a10.055,10.055,0,0,1,20.11,0c0,2.538-1.933,6.49-5.744,11.747A5.271,5.271,0,0,1,12,24ZM12,2.181a7.883,7.883,0,0,0-7.874,7.874c0,2.01,1.893,5.727,5.329,10.466a3.145,3.145,0,0,0,5.09,0c3.436-4.739,5.329-8.456,5.329-10.466A7.883,7.883,0,0,0,12,2.181Z"
+                />
+              </svg>
+              <p>Удобное расположение</p>
+            </div>
+    
+            <div class="advantages-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Outline"
+                viewBox="0 0 24 24"
+                width="60"
+                height="60"
+              >
+                <path
+                  d="M22.773,7.721A4.994,4.994,0,0,0,19,6H15.011l.336-2.041A3.037,3.037,0,0,0,9.626,2.122L7.712,6H5a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5H18.3a5.024,5.024,0,0,0,4.951-4.3l.705-5A5,5,0,0,0,22.773,7.721ZM2,16V11A3,3,0,0,1,5,8H7V19H5A3,3,0,0,1,2,16Zm19.971-4.581-.706,5A3.012,3.012,0,0,1,18.3,19H9V7.734a1,1,0,0,0,.23-.292l2.189-4.435A1.07,1.07,0,0,1,13.141,2.8a1.024,1.024,0,0,1,.233.84l-.528,3.2A1,1,0,0,0,13.833,8H19a3,3,0,0,1,2.971,3.419Z"
+                />
+              </svg>
+    
+              <p>Высокое качество</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="about">
+        <div class="about-content center">
+        <p class="semi-bold fs24">О нас</p>
+        <hr/>
+        <p class="gray">«Выборг-Монтаж» более 20 лет занимается созданием металлоконструкций на основе как собственных, так и ваших чертежей. Мы создаём конструкции средней и повышенной сложности и проводим комплексную работу по их обработке.</p>
+        <a href="/about"><button class="btn">Подробнее</button></a>
+        </div>
+      </section>
+      <section class="partners">
+        <div class="partners-content center">
+          <p class="semi-bold fs24">Наши партнёры</p>
+          <hr>
+          <div class="logotypes">Здесь должны быть логотипы</div>
+        </div>
+      </section>
+    </main>
+    <%- include("./partials/footer") %>
+  </body>
+</html>
