@@ -8,7 +8,7 @@ const register = require("./routes/register");
 const login = require("./routes/login");
 const messages = require("./middleware/messages");
 const users = require("./middleware/users");
-const validate = require("./middleware/validate");
+// const validate = require("./middleware/validate");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
