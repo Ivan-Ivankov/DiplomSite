@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <link rel="stylesheet" href="/css/main-login.css" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/main-index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,26 +16,39 @@
   </head>
   <body>
     <%- include("./partials/header") -%>
-    <form action="/register" method="post">
-      <input
-        type="text"
-        class="form-control"
-        name="user[name]"
-        id="inputName"
-        placeholder="Username"
-      />
-      <input
-        type="password"
-        class="form-control"
-        name="user[password]"
-        id="inputPass"
-        placeholder="password"
-      />
-      <select name="user[role]" id="">
-        <option value="user">user</option>
-        <option value="admin">admin</option>
-      </select>
-      <button type="submit">Зарегестрироваться</button>
-    </form>
+    <section class="sign-in">
+      <div class="sign-in-content">
+        <p class="semi-bold fs24">Поле регистрации пользователей</p>
+        <hr />
+
+        <form class="center" action="/register" method="post">
+          <label for="inputName">Логин</label>
+          <input
+            type="text"
+            class="form-control"
+            name="user[name]"
+            id="inputName"
+            placeholder="Username"
+          />
+          <label for="inputPass">Пароль</label>
+          <input
+            type="password"
+            class="form-control"
+            name="user[password]"
+            id="inputPass"
+            placeholder="password"
+          />
+          <div class="role">
+            <label for="role">Роль пользователя:</label>
+            <select name="user[role]" id="role">
+              <option value="user">user</option>
+              <option value="admin">admin</option>
+            </select>
+          </div>
+
+          <button class="btn" type="submit">Зарегистрировать</button>
+        </form>
+      </div>
+    </section>
   </body>
 </html>

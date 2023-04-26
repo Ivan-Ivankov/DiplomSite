@@ -2,8 +2,10 @@
   <nav>
     <ul class="semi-bold fs18">
       <li><a href="/">Главная</a></li>
+      <% if(title != "Авторизация" && title != "Регистрация") { %>
       <li><a href="/about">О компании</a></li>
       <li><a href="/contacts">Контакты</a></li>
+      <% } %> 
       <% if (locals.user) { %>
         <li><a href="#">Документы</a></li>
       <% } %> 
@@ -21,6 +23,7 @@
     <% } %> 
   </nav>
 </header>
+<% if(title != "Авторизация" && title != "Регистрация") { %>
 <section class="section-info">
   <div class="section-info-content center">
   <div class="logo-left-side center">
@@ -55,6 +58,7 @@
     </div>
   </div>
 </section>
+
 <% if(title == "Выборг-Монтаж") { %>
 <section class="image-info center">
   <div class="image-filter"></div>
@@ -79,3 +83,4 @@
 </section>
 <% } %>
 <hr />
+<% } %>
