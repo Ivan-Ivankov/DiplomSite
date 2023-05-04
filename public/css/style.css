@@ -287,6 +287,12 @@ footer p:last-child {
   height: 80px;
 }
 
+.err {
+  /* margin: 10px; */
+  color: red;
+  text-align: center;
+}
+
 /* Hover */
 header a:hover {
   text-shadow: 0 0 10px #ffffff;

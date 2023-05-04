@@ -1,3 +1,8 @@
+.show-users {
+  max-width: 1440px;
+  margin-top: 60px;
+}
+
 .users {
   max-width: 1440px;
   display: flex;
@@ -8,15 +13,16 @@
 .users td {
   border: 1px solid #00a7cc;
   padding: 10px 50px;
+  text-align: center;
 }
 
 .btn {
-  position: relative;
+  /* position: relative; */
   margin-top: 20px;
   padding: 10px 15px;
   background-color: #00a7cc;
   border-radius: 10px;
-  z-index: 1;
+
   text-decoration: none;
   color: #ffffff;
   font-size: 18px;
@@ -94,6 +100,10 @@ form input {
   border-radius: 6px;
   padding: 5px 10px;
   margin: 10px 0;
+}
+
+.show-users-content {
+  flex-direction: column;
 }
 
 select {

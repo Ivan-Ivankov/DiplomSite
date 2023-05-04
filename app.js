@@ -9,6 +9,7 @@ const login = require("./routes/login");
 const messages = require("./middleware/messages");
 const users = require("./middleware/users");
 const admin_panel = require("./routes/admin_panel");
+const forUsers = require("./routes/forUsers");
 // const validate = require("./middleware/validate");
 
 app.set("views", path.join(__dirname, "views"));
@@ -30,18 +31,19 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about", { title: "О компании" });
 });
+app.get("/forUsers/:page", forUsers.list);
 
 app.get("/admin-panel", admin_panel.list);
 app.get("/admin-panel/:id/del", admin_panel.removeUser);
 app.get("/admin-panel/:id", admin_panel.id);
 app.post("/admin-panel/:id/ch", admin_panel.changeUser);
 
-app.get("/register", register.form);
+app.get("/admin-panel/register", admin_panel.reg);
 app.get("/login", login.form);
 
 app.post("/feedback", forms.submit);
 
-app.post("/register", register.submit);
+app.post("/admin-panel/register", register.submit);
 
 app.get("/logout", login.logout);
 app.post("/login", login.submit);

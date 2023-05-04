@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 db.serialize(() => {
   const stmt =
-    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, password, email TEXT, role TEXT)";
+    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, password, email TEXT, role TEXT, time TEXT)";
   db.run(stmt);
 });
 
@@ -13,8 +13,19 @@ class User {
   //запись в базу юзера
   static create(data, cb) {
     const sql =
-      "INSERT INTO users (name, password, email, role) VALUES ( ?, ?, ?, ?)";
+      "INSERT INTO users (name, password, email, role, time) VALUES ( ?, ?, ?, ?, ?)";
     const saltRounds = 10;
+    const today = new Date();
+
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+
+    const now = today.toLocaleString("ru-RU", options);
+
     bcrypt.genSalt(saltRounds, (err, salt) => {
       if (err) return next(err);
 
@@ -22,7 +33,7 @@ class User {
         if (err) return next(err);
 
         db.serialize(() => {
-          db.run(sql, data.name, hash, data.email, data.role, cb);
+          db.run(sql, data.name, hash, data.email, data.role, now, cb);
         });
       });
     });
@@ -35,6 +46,7 @@ class User {
   static findByID(id, cb) {
     db.get("SELECT * FROM users WHERE id = ?", id, cb);
   }
+
   //проверка аутентификации
   static authentificate(name, password, cb) {
     User.findByName(name, (err, user) => {

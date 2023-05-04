@@ -7,7 +7,7 @@
       <li><a href="/contacts">Контакты</a></li>
       <% } %> 
       <% if (locals.user) { %>
-        <li><a href="/forUsers">Для сотрудников</a></li>
+        <li><a href="/forUsers/news">Для сотрудников</a></li>
       <% } %> 
     </ul>
     <% if (locals.user) { %> 
@@ -23,13 +23,13 @@
     <% } %> 
   </nav>
 </header>
-<% if(title != "Авторизация" && title != "Регистрация" && title != "Панель админа") { %>
+<% if(title != "Авторизация" && title != "Регистрация" && title != "Панель админа" && title != "Для сотрудников") { %>
 <section class="section-info">
   <div class="section-info-content center">
   <div class="logo-left-side center">
     <img class="logo-img" src="img/logotype.jpg" alt="" />
     <div class="logo-name">
-      <p class="bold fs24">ООО "Выборг-Монтаж"</p>
+      <p class="bold fs24">ОАО "Выборг-Монтаж"</p>
       <p class="gray fs16">Завод железо-бетонных изделий</p>
     </div>
   </div>

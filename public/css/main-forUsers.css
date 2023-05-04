@@ -1,7 +1,7 @@
-.about {
-  margin-bottom: 70px;
+.forUsers {
+  margin-top: 60px;
 }
-.about-content {
+.forUsers-content {
   display: flex;
   margin: auto;
   max-width: 1040px;
@@ -56,4 +56,25 @@
 
 .content-text li {
   margin-left: 60px;
+}
+
+.content-text {
+  width: 100%;
+}
+
+.text-area {
+  margin-left: 10px;
+  /* width: 100%; */
+}
+
+.news-theme {
+  margin: 10px 0;
+}
+
+.news-text {
+}
+
+.news-time {
+  float: right;
+  width: auto;
 }

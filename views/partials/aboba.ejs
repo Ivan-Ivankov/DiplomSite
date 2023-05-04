@@ -1,0 +1,30 @@
+<div class="content">
+  <div class="way center fs18">
+    <a href="/">Главная</a>
+    <p class="gray">/ <%= title %> / Новости</p>
+  </div>
+
+  <p class="semi-bold fs24">Новости</p>
+  <hr />
+
+  <% news.forEach((elem) => { %>
+  <div class="content-text">
+    <p class="semi-bold fs20">
+      <%= elem.name %> /
+      <span class="err fs18"><%= elem.role %></span>
+    </p>
+    <div class="text-area">
+      <p class="news-theme semi-bold"><%= elem.theme %></p>
+      <p class="news-text">Lorem ipsum dolor sit a</p>
+      <p class="news-time fs14"><%= elem.time %></p>
+    </div>
+  </div>
+  <hr />
+  <%})%>
+  <!--  -->
+
+  <!--  -->
+  <% if (locals.user.role === "admin") { %>
+  <a href="/forUsers/news/<%= locals.user.id %>">Создать</a>
+  <% }%>
+</div>

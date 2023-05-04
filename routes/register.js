@@ -10,12 +10,12 @@ exports.submit = (req, res, next) => {
     if (err) return next(err);
     if (user) {
       res.error("Такой пользователь в базе уже есть");
-      res.redirect("/");
+      res.redirect("/admin-panel/register");
     } else {
       User.create(data, (err, user) => {
         if (err) return next(err);
         // req.session.uname = data.name;
-        res.redirect("back");
+        res.redirect("/admin-panel");
       });
     }
   });
