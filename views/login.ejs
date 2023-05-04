@@ -18,13 +18,17 @@
     <%- include("./partials/header") -%>
     <main>
       <section class="sign-in">
+        <% if (locals.messages) {%> <% messages.forEach((message) => { %>
+        <h2 class="center err <%= message.type %>"><%= message.string %></h2>
+        <% }) %> <% removeMessages() %> <% } %>
         <div class="sign-in-content">
-          <p class="semi-bold fs24">Поле авторизации</p>
-          <hr />
           <!-- Формочка -->
           <form class="center" action="/login" method="post">
+            <p class="semi-bold fs24">Поле авторизации</p>
+            <hr />
             <label for="inputName">Логин</label>
             <input
+              required
               type="text"
               class="form-control"
               name="user[name]"
@@ -33,13 +37,14 @@
             />
             <label for="inputPass">Пароль</label>
             <input
+              required
               type="password"
               class="form-control"
               name="user[password]"
               id="inputPass"
               placeholder="Password"
             />
-            <button class="btn" type="submit">Авторизоваться</button>
+            <button class="btn" type="submit">Войти</button>
           </form>
         </div>
       </section>

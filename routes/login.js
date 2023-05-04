@@ -12,7 +12,7 @@ exports.submit = (req, res, next) => {
       req.session.uname = user.name;
       res.redirect("/");
     } else {
-      res.error("Имя или Пароль не верный");
+      res.error("Логин или Пароль не верный");
       res.redirect("back");
     }
   });

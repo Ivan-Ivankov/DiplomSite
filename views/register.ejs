@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <link rel="stylesheet" href="/css/main-login.css" />
+    <link rel="stylesheet" href="/css/main-register.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,14 +16,14 @@
   </head>
   <body>
     <%- include("./partials/header") -%>
-    <section class="sign-in">
-      <div class="sign-in-content">
-        <p class="semi-bold fs24">Поле регистрации пользователей</p>
-        <hr />
-
+    <section class="register">
+      <div class="register-content">
         <form class="center" action="/register" method="post">
+          <p class="semi-bold fs24">Поле регистрации пользователей</p>
+          <hr />
           <label for="inputName">Логин</label>
           <input
+            required
             type="text"
             class="form-control"
             name="user[name]"
@@ -36,7 +36,17 @@
             class="form-control"
             name="user[password]"
             id="inputPass"
-            placeholder="password"
+            placeholder="Password"
+            required
+          />
+          <label for="inputPass">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="user[email]"
+            id="inputPass"
+            placeholder="Email"
+            required
           />
           <div class="role">
             <label for="role">Роль пользователя:</label>
@@ -46,7 +56,7 @@
             </select>
           </div>
 
-          <button class="btn" type="submit">Зарегистрировать</button>
+          <button class="btn" type="submit">Создать</button>
         </form>
       </div>
     </section>

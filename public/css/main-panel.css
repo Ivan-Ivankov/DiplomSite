@@ -1,0 +1,132 @@
+.users {
+  max-width: 1440px;
+  display: flex;
+  justify-content: center;
+  margin: 50px auto;
+}
+
+.users td {
+  border: 1px solid #00a7cc;
+  padding: 10px 50px;
+}
+
+.btn {
+  position: relative;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #00a7cc;
+  border-radius: 10px;
+  z-index: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  box-shadow: 0 1px 5px rgb(165, 165, 165);
+}
+
+a {
+  text-decoration: none;
+  color: #00a7cc;
+}
+
+.btn a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/*  */
+
+.register {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* margin: 120px 0; */
+}
+
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 50%;
+}
+
+.register-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -300px;
+  background-color: #ffffff;
+  padding: 50px;
+  max-width: 300px;
+  border: 2px solid #00a7cc;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px rgb(212, 212, 212);
+}
+
+form {
+  flex-direction: column;
+}
+
+form p {
+  text-align: center;
+}
+
+.register .btn {
+  position: relative;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #00a7cc;
+  border-radius: 10px;
+  z-index: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  box-shadow: 0 1px 5px rgb(165, 165, 165);
+}
+
+form input {
+  text-align: center;
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin: 10px 0;
+}
+
+select {
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin: 10px 0 0 10px;
+}
+
+.err {
+  margin: 10px;
+  color: red;
+}
+
+.krest {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 8px 8px 6px 8px;
+  background-color: #00a7cc;
+  border: none;
+  border-radius: 0 10px 0 10px;
+}
+
+.krest > svg {
+  fill: #ffffff;
+}
+
+.krest:hover {
+  background-color: #00809c;
+  cursor: pointer;
+}
+
+.krest:active {
+  background-color: #003e4d;
+}

@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 db.serialize(() => {
   const stmt =
-    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, password, role TEXT)";
+    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, password, email TEXT, role TEXT)";
   db.run(stmt);
 });
 
@@ -12,17 +12,17 @@ class User {
   constructor() {}
   //запись в базу юзера
   static create(data, cb) {
-    const sql = "INSERT INTO users (name, password, role) VALUES ( ?, ?, ?)";
+    const sql =
+      "INSERT INTO users (name, password, email, role) VALUES ( ?, ?, ?, ?)";
     const saltRounds = 10;
     bcrypt.genSalt(saltRounds, (err, salt) => {
       if (err) return next(err);
-      //хэшируем пароль для записи в базу
+
       bcrypt.hash(data.password, salt, (err, hash) => {
         if (err) return next(err);
-        // Store hash in your password DB.
+
         db.serialize(() => {
-          db.run(sql, data.name, hash, data.role, cb);
-          // db.get("SELECT name FROM users WHERE name=?", data.name, cb); // или id? и serialize убрать
+          db.run(sql, data.name, hash, data.email, data.role, cb);
         });
       });
     });
@@ -32,15 +32,46 @@ class User {
   static findByName(username, cb) {
     db.get("SELECT * FROM users WHERE name = ?", username, cb);
   }
+  static findByID(id, cb) {
+    db.get("SELECT * FROM users WHERE id = ?", id, cb);
+  }
   //проверка аутентификации
   static authentificate(name, password, cb) {
     User.findByName(name, (err, user) => {
       if (err) return cb(err);
       if (!user) return cb();
-      //взято из описания npm пакета
       bcrypt.compare(password, user.password, (err, result) => {
         if (result) return cb(null, user);
         cb();
+      });
+    });
+  }
+  static selectAll(cb) {
+    db.all("SELECT * FROM users", cb);
+  }
+  static deleteUser(id, cb) {
+    db.get("DELETE FROM users WHERE id = ?", id, cb);
+  }
+  static change(id, data, cb) {
+    User.findByID(id, (err, user) => {
+      if (err) return cb(err);
+      if (!user) return cb();
+
+      const sql =
+        "UPDATE users SET name = ?, password = ?, email = ?, role = ? WHERE id = ?";
+
+      const saltRounds = 10;
+
+      bcrypt.genSalt(saltRounds, (err, salt) => {
+        if (err) return next(err);
+
+        bcrypt.hash(data.password, salt, (err, hash) => {
+          if (err) return next(err);
+
+          db.serialize(() => {
+            db.run(sql, data.name, hash, data.email, data.role, id, cb);
+          });
+        });
       });
     });
   }

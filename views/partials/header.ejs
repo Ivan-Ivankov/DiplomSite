@@ -7,14 +7,14 @@
       <li><a href="/contacts">Контакты</a></li>
       <% } %> 
       <% if (locals.user) { %>
-        <li><a href="#">Документы</a></li>
+        <li><a href="/forUsers">Для сотрудников</a></li>
       <% } %> 
     </ul>
     <% if (locals.user) { %> 
       <div class="header-menu semi-bold">Вы вошли как: <%#   меню пользователей выполнивших вход%>
         <span class="login gray"><%= user.name %> </span>
         <a class="semi-bold" href="/logout">Выйти</a>
-        <% if (locals.user.role === "admin") { %><a class="regist semi-bold" href="/register">Создать пользователя</a><% } %> 
+        <% if (locals.user.role === "admin") { %><a class="regist semi-bold" href="/admin-panel">Панель админа</a><% } %> 
       </div>
     <% } else { %>
         <div class='header-menu'> <%# //меню анонимных пользователей %> 
@@ -23,7 +23,7 @@
     <% } %> 
   </nav>
 </header>
-<% if(title != "Авторизация" && title != "Регистрация") { %>
+<% if(title != "Авторизация" && title != "Регистрация" && title != "Панель админа") { %>
 <section class="section-info">
   <div class="section-info-content center">
   <div class="logo-left-side center">
