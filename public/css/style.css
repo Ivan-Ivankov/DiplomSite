@@ -95,18 +95,17 @@ nav a {
 }
 
 .header-menu {
-  max-width: 234px;
+  max-width: 500px;
   color: #ffffff;
+  text-align: right;
 }
 
 .login {
-  margin: 0 10px 0 6px;
   color: black;
+  margin-left: 6px;
 }
-
-.regist {
-  margin-top: 6px;
-  float: right;
+.header-menu a:last-child {
+  margin-left: 6px;
 }
 
 /* Info */

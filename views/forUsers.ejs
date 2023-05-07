@@ -16,29 +16,19 @@
     <!-- <link rel="icon" href="../public/img/favicon.ico.jpg" type="image/x-icon" /> -->
   </head>
   <body>
-    <% if (!locals.user) { %>
-    <!--  -->
-    <%- include("./partials/404") -%>
-    <!--  -->
-    <% } else { %>
-    <!--  -->
     <%- include("./partials/header") -%>
     <main>
-      <section>
-        <section class="forUsers">
-          <div class="forUsers-content">
-            <div class="menu">
-              <ul>
-                <a href="/forUsers/news"><li>Новости</li></a>
-                <a href="/forUsers/documents"><li>Документы</li></a>
-                <a href="/forUsers/chat"><li>Чат</li></a>
-              </ul>
-            </div>
-            <%- include("./partials/aboba") -%>
+      <!--  -->
+      <section class="forUsers">
+        <div class="forUsers-content">
+          <div class="menu">
+            <ul>
+              <a href="/forUsers/documents"><li>Документы</li></a>
+              <a href="/forUsers/chat"><li>Чат</li></a>
+            </ul>
           </div>
-        </section>
+        </div>
       </section>
     </main>
-    <% } %>
   </body>
 </html>

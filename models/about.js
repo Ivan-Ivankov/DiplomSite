@@ -8,7 +8,7 @@ db.serialize(() => {
   db.run(stmt);
 });
 
-class ForUsersUwU {
+class About {
   constructor() {}
 
   static createNews(data, id, cb) {
@@ -48,4 +48,4 @@ class ForUsersUwU {
   }
 }
 
-module.exports = ForUsersUwU;
+module.exports = About;

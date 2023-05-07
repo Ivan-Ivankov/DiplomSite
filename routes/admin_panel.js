@@ -1,28 +1,27 @@
 const User = require("../models/user");
 
 const id = 0;
+const reg = false;
 
 exports.list = function (req, res, next) {
-  const reg = false;
   User.selectAll((err, users) => {
     if (err) return next(err);
     res.render("admin_panel", {
       title: "Панель админа",
       admin_panel: users,
-      reg,
-      id,
+      reg: reg,
+      id: id,
     });
   });
 };
 
 exports.removeUser = (req, res, next) => {
   const userid = req.params.id;
-  const reg = false;
   console.log(userid);
   User.deleteUser(userid, (err) => {
     if (err) return next(err);
   });
-  res.redirect("back");
+  res.redirect("/back");
 };
 
 exports.changeUser = (req, res, next) => {
@@ -36,7 +35,6 @@ exports.changeUser = (req, res, next) => {
 
 exports.id = (req, res, next) => {
   const id = req.params.id;
-  const reg = false;
   User.selectAll((err, users) => {
     if (err) return next(err);
     User.findByID(id, (err, user) => {
@@ -45,9 +43,9 @@ exports.id = (req, res, next) => {
       res.render("admin_panel", {
         title: "Панель админа",
         admin_panel: users,
-        reg,
-        user,
-        id,
+        reg: reg,
+        user: user,
+        id: id,
       });
     });
   });
@@ -60,8 +58,8 @@ exports.reg = (req, res, next) => {
     res.render("admin_panel", {
       title: "Панель админа",
       admin_panel: users,
-      reg,
-      id,
+      reg: reg,
+      id: id,
     });
   });
 };

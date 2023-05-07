@@ -2,32 +2,30 @@
   <nav>
     <ul class="semi-bold fs18">
       <li><a href="/">Главная</a></li>
-      <% if(title != "Авторизация" && title != "Регистрация") { %>
-      <li><a href="/about">О компании</a></li>
+      <li><a href="/about/company">О компании</a></li>
       <li><a href="/contacts">Контакты</a></li>
-      <% } %> 
       <% if (locals.user) { %>
         <li><a href="/forUsers/news">Для сотрудников</a></li>
       <% } %> 
     </ul>
     <% if (locals.user) { %> 
-      <div class="header-menu semi-bold">Вы вошли как: <%#   меню пользователей выполнивших вход%>
-        <span class="login gray"><%= user.name %> </span>
+      <div class="header-menu semi-bold">
+        <p>Вы вошли как:<span class="login"> <%= user.name %> </span></p> 
+        <% if (locals.user.role === "admin") { %><a class="regist semi-bold" href="/admin-panel">Панель админа</a><% } %>
         <a class="semi-bold" href="/logout">Выйти</a>
-        <% if (locals.user.role === "admin") { %><a class="regist semi-bold" href="/admin-panel">Панель админа</a><% } %> 
       </div>
     <% } else { %>
-        <div class='header-menu'> <%# //меню анонимных пользователей %> 
+        <div class='header-menu'> 
           <a class="semi-bold" href="/login">Войти</a>
         </div>
     <% } %> 
   </nav>
 </header>
-<% if(title != "Авторизация" && title != "Регистрация" && title != "Панель админа" && title != "Для сотрудников") { %>
+<% if(title === "Выборг-Монтаж" || title === "О компании") { %>
 <section class="section-info">
   <div class="section-info-content center">
   <div class="logo-left-side center">
-    <img class="logo-img" src="img/logotype.jpg" alt="" />
+    <img class="logo-img" src="/img/loggoo.png" alt="" />
     <div class="logo-name">
       <p class="bold fs24">ОАО "Выборг-Монтаж"</p>
       <p class="gray fs16">Завод железо-бетонных изделий</p>
@@ -59,7 +57,7 @@
   </div>
 </section>
 
-<% if(title == "Выборг-Монтаж") { %>
+<% if(title === "Выборг-Монтаж") { %>
 <section class="image-info center">
   <div class="image-filter"></div>
   <div class="image-info-text center">
@@ -68,19 +66,11 @@
       «Выборг-Монтаж» занимается производством металлоконструкций на основе чертежей заказчиков или своих собственных. Мы разрабатываем проекты КМ и КМД с максимальной эффективностью и финансовой выгодой для вас.
     </p>
   </div>
-  <a href="/about"><button class="btn">Подробнее</button></a>
+  <a href="/about/company"><button class="btn">Подробнее</button></a>
 </div>
 </section>
-<% } else { %>
-  <section class="image-info center" style="height: 260px;">
-    <div class="image-filter"></div>
-    <div class="image-info-text center">
-      <p class="extra-bold">Железобетонные изделия, ЖБИ</p>
-      <p></p>
-    </div>
-    <a href="/about"><button class="btn">Подробнее</button></a>
-  </div>
-</section>
-<% } %>
+
 <hr />
+<% } %>
+
 <% } %>

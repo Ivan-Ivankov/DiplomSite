@@ -46,7 +46,6 @@ class User {
   static findByID(id, cb) {
     db.get("SELECT * FROM users WHERE id = ?", id, cb);
   }
-
   //проверка аутентификации
   static authentificate(name, password, cb) {
     User.findByName(name, (err, user) => {

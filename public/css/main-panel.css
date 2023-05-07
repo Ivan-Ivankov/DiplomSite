@@ -1,13 +1,14 @@
 .show-users {
   max-width: 1440px;
   margin-top: 60px;
+  margin: 50px auto;
 }
 
 .users {
   max-width: 1440px;
   display: flex;
   justify-content: center;
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 .users td {
@@ -70,7 +71,7 @@ a {
   max-width: 300px;
   border: 2px solid #00a7cc;
   border-radius: 10px;
-  box-shadow: 0 1px 5px rgb(212, 212, 212);
+  box-shadow: 0 1px 5px #00a7cc;
 }
 
 form {
