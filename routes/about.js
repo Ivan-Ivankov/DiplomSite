@@ -56,5 +56,11 @@ exports.form = (req, res, next) => {
         page: page,
       });
       break;
+    case "contacts":
+      res.render("about", {
+        title: "О компании",
+        page: page,
+      });
+      break;
   }
 };

@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const session = require("express-session");
-var favicon = require("serve-favicon");
+const favicon = require("serve-favicon");
 const forms = require("./routes/forms");
 const register = require("./routes/register");
 const login = require("./routes/login");
@@ -10,6 +10,7 @@ const messages = require("./middleware/messages");
 const users = require("./middleware/users");
 const admin_panel = require("./routes/admin_panel");
 const about = require("./routes/about");
+const forUsers = require("./routes/forUsers");
 // const validate = require("./middleware/validate");
 
 app.set("views", path.join(__dirname, "views"));
@@ -28,6 +29,9 @@ app.use(users);
 app.get("/", (req, res) => {
   res.render("index", { title: "Выборг-Монтаж" });
 });
+app.get("/forUsers/:page", forUsers.form);
+app.get("/forUsers/:page/:name", forUsers.form);
+
 app.get("/about/:page", about.form);
 app.get("/about/:page/:id", about.submitForm);
 app.get("/about/:page/:id/del", about.removeNews);

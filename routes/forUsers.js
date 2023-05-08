@@ -37,30 +37,29 @@ exports.removeNews = (req, res, next) => {
 
 exports.form = (req, res, next) => {
   const page = req.params.page;
-  if (page === "news") {
-    forUsersUwU.newsList((err, news) => {
-      if (err) return next(err);
+  switch (page) {
+    case "profile":
+      const name = req.params.name;
+      User.findByName(name, (err, user) => {
+        if (err) return next(err);
+        res.render("forUsers", {
+          title: "Для сотрудников",
+          user: user,
+          page: page,
+        });
+      });
+      break;
+    case "documents":
       res.render("forUsers", {
         title: "Для сотрудников",
-        news: news,
         page: page,
-        id: id,
       });
-    });
-  }
-  if (page === "documents") {
-    const page = req.params.page;
-    res.render("forUsers", {
-      title: "Для сотрудников",
-      page: page,
-    });
-  }
-
-  if (page === "chat") {
-    const page = req.params.page;
-    res.render("forUsers", {
-      title: "Для сотрудников",
-      page: page,
-    });
+      break;
+    case "chat":
+      res.render("forUsers", {
+        title: "Для сотрудников",
+        page: page,
+      });
+      break;
   }
 };

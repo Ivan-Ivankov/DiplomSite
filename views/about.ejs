@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="/css/main-about.css" />
     <% } %>
     <!--  -->
+    <% if (page === "contacts") { %>
+    <link rel="stylesheet" href="/css/main-contacts.css" />
+    <% } %>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,19 +29,44 @@
     <main>
       <!-- Если о компании -->
       <% if (page === "company") { %>
-      <!--  -->
-      <%- include("./partials/about2") -%>
-      <!--  -->
+      <section class="about">
+        <div class="about-content">
+          <div class="menu">
+            <ul>
+              <a href="/about/company"><li>О компании</li></a>
+              <a href="/about/news"><li>Новости</li></a>
+              <a href="/about/contacts"><li>Контакты</li></a>
+            </ul>
+          </div>
+          <!--  -->
+          <%- include("./partials/about2") -%>
+          <!--  -->
       <% } %>
 
       <!-- Если новости -->
       <% if (page === "news") { %>
+        <section class="forUsers">
+          <div class="forUsers-content">
+            <div class="menu">
+              <ul>
+                <a href="/about/company"><li>О компании</li></a>
+                <a href="/about/news"><li>Новости</li></a>
+                <a href="/about/contacts"><li>Контакты</li></a>
+              </ul>
+            </div>
       <!--  -->
       <%- include("./partials/news") -%>
       <!--  -->
       <% } %>
+
+      <!-- Если контакты -->
+      <% if (page === "contacts") { %>
+      <!--  -->
+      <%- include("./partials/contacts") -%>
+      <!--  -->
+      <% } %>
     </main>
-    <% if (page === "company") { %>
+    <% if (page != "news") { %>
     <!--  -->
     <%- include("./partials/footer") %>
     <!--  -->
