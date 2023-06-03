@@ -59,6 +59,7 @@ hr {
 
 .btn {
   border: none;
+  transition: 0.4s;
 }
 
 /* header */
@@ -90,6 +91,7 @@ nav li {
 }
 
 nav a {
+  transition: 0.4s;
   text-decoration: none;
   color: #ffffff;
 }
@@ -295,10 +297,19 @@ footer p:last-child {
 /* Hover */
 header a:hover {
   text-shadow: 0 0 10px #ffffff;
+  background-color: #0090b1;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.header-menu a:hover {
+  background-color: #00a7cc;
+  padding: 0;
 }
 
 .btn:hover {
   background-color: #00809c;
+  transform: scale(1.1);
   cursor: pointer;
 }
 
@@ -309,4 +320,5 @@ header a:active {
 
 .btn:active {
   background-color: #003e4d;
+  transform: scale(1);
 }

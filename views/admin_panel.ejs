@@ -5,7 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <% if (page === "users") { %>
     <link rel="stylesheet" href="/css/main-panel.css" />
+    <% } %>
+    <!--  -->
+    <% if (page === "feed") { %>
+    <link rel="stylesheet" href="/css/main-feeds.css" />
+    <% } %>
+    <!--  -->
+    <% if (page === "news") { %>
+    <link rel="stylesheet" href="/css/main-news.css" />
+    <% } %>
+    <link rel="stylesheet" href="/css/admin-menu.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,200 +31,53 @@
     <!--  -->
     <%- include("./partials/404") -%>
     <!--  -->
-    <% } else { %> <%- include("./partials/header") -%>
+    <% } else { %>
+    <!--  -->
+    <%- include("./partials/header") -%>
+    <!--  -->
+    <% switch (page) { case "users": %>
+    <div class="menu fs20">
+      <ul>
+        <li class="active"><a href="/admin-panel/users">Пользователи</a></li>
+        <li><a href="/admin-panel/feed">Вопросы</a></li>
+        <li><a href="/admin-panel/news">Новости</a></li>
+      </ul>
+    </div>
+    <% break; case "feed": %>
+    <div class="menu fs20">
+      <ul>
+        <li><a href="/admin-panel/users">Пользователи</a></li>
+        <li class="active"><a href="/admin-panel/feed">Вопросы</a></li>
+        <li><a href="/admin-panel/news">Новости</a></li>
+      </ul>
+    </div>
+    <% break; case "news": %>
+    <div class="menu fs20">
+      <ul>
+        <li><a href="/admin-panel/users">Пользователи</a></li>
+        <li><a href="/admin-panel/feed">Вопросы</a></li>
+        <li class="active"><a href="/admin-panel/news">Новости</a></li>
+      </ul>
+    </div>
+    <% break; } %>
     <main>
-      <section class="show-users">
-        <div class="show-users-content center">
-          <p class="center semi-bold fs24">Список сотрудников</p>
-          <table cellspacing="0" class="users">
-            <tr class="semi-bold fs24">
-              <td style="padding: 10px 50px">id</td>
-              <td>Логин</td>
-              <td>Email</td>
-              <td>Роль</td>
-              <td>Дата создания</td>
-              <td>Дополнительно</td>
-            </tr>
-            <% admin_panel.forEach((user)=>{ %>
-            <!--  -->
-            <tr class="fs18">
-              <td style="padding: 10px 50px" id="sss"><%= user.id %></td>
-              <td><%= user.name %></td>
-              <td><%= user.email %></td>
-              <td><%= user.role %></td>
-              <td><%= user.time %></td>
-              <td>
-                <a href="/admin-panel/<%= user.id %>/del">Удалить</a>
-                /
-                <a href="/admin-panel/<%= user.id %>">Изменить</a>
-              </td>
-            </tr>
-
-            <% }) %>
-          </table>
-          <button class="create btn center">
-            <a href="/admin-panel/register">Создать пользователя</a>
-          </button>
-        </div>
-      </section>
-
-      <% if (id) { %>
-      <section class="register">
-        <div class="back"></div>
-        <div class="register-content">
-          <a class="krest" href="/admin-panel">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              version="1.1"
-              id="Capa_1"
-              x="0px"
-              y="0px"
-              viewBox="0 0 512.021 512.021"
-              style="enable-background: new 0 0 512.021 512.021"
-              xml:space="preserve"
-              width="20"
-              height="20"
-            >
-              <g>
-                <path
-                  d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"
-                />
-              </g>
-            </svg>
-          </a>
-          <form class="center" action="/admin-panel/<%= id %>/ch" method="post">
-            <p class="semi-bold fs24">
-              Изменение пользователя: <%= user.name %>
-            </p>
-            <hr />
-            <label for="inputName">Логин</label>
-            <input
-              required
-              type="text"
-              class="form-control"
-              name="user[name]"
-              id="inputName"
-              placeholder="Username"
-              value="<%= user.name %>"
-            />
-            <label for="inputPass">Пароль</label>
-            <input
-              type="password"
-              class="form-control"
-              name="user[password]"
-              id="inputPass"
-              placeholder="Password"
-              required
-            />
-            <label for="inputPass">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              name="user[email]"
-              id="inputPass"
-              placeholder="Email"
-              required
-              value="<%= user.email %>"
-            />
-            <div class="role">
-              <label for="role">Роль пользователя:</label>
-              <select name="user[role]" id="role">
-                <option value="user">user</option>
-                <option value="admin">admin</option>
-                <option value="moderator">moderator</option>
-              </select>
-            </div>
-
-            <button class="btn" type="submit">Изменить</button>
-          </form>
-        </div>
-      </section>
+      <% if (page === "users") { %>
+      <!--  -->
+      <%- include("./adminPanel/users") -%>
+      <!--  -->
       <% } %>
       <!--  -->
-      <% if (reg) { %>
+      <% if (page === "feed") { %>
       <!--  -->
-      <section class="register">
-        <div class="back"></div>
-        <div class="register-content">
-          <a class="krest" href="/admin-panel">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              version="1.1"
-              id="Capa_1"
-              x="0px"
-              y="0px"
-              viewBox="0 0 512.021 512.021"
-              style="enable-background: new 0 0 512.021 512.021"
-              xml:space="preserve"
-              width="20"
-              height="20"
-            >
-              <g>
-                <path
-                  d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"
-                />
-              </g>
-            </svg>
-          </a>
-          <form class="center" action="/admin-panel/register" method="post">
-            <% if (locals.messages) {%>
-            <!--  -->
-            <% messages.forEach((message) => { %>
-            <h2 class="center err <%= message.type %>">
-              <%= message.string %>
-            </h2>
-            <% }) %>
-            <!--  -->
-            <% removeMessages() %>
-            <!--  -->
-            <% } %>
-            <p class="semi-bold fs24">Создание пользователя</p>
-
-            <hr />
-            <label for="inputName">Логин</label>
-            <input
-              required
-              type="text"
-              class="form-control"
-              name="user[name]"
-              id="inputName"
-              placeholder="Username"
-            />
-            <label for="inputPass">Пароль</label>
-            <input
-              type="password"
-              class="form-control"
-              name="user[password]"
-              id="inputPass"
-              placeholder="Password"
-              required
-            />
-            <label for="inputPass">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              name="user[email]"
-              id="inputPass"
-              placeholder="Email"
-              required
-            />
-            <div class="role">
-              <label for="role">Роль пользователя:</label>
-              <select name="user[role]" id="role">
-                <option value="user">user</option>
-                <option value="admin">admin</option>
-                <option value="moderator">moderator</option>
-              </select>
-            </div>
-
-            <button class="btn" type="submit">Создать</button>
-          </form>
-        </div>
-      </section>
+      <%- include("./adminPanel/feeds") -%>
+      <!--  -->
       <% } %>
+      <!--  -->
+      <% if (page === "news") { %>
+      <!--  -->
+      <%- include("./adminPanel/news") -%>
+      <!--  -->
+      <% }} %>
     </main>
-    <% } %>
   </body>
 </html>

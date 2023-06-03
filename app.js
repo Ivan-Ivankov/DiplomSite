@@ -37,17 +37,24 @@ app.get("/about/:page/:id", about.submitForm);
 app.get("/about/:page/:id/del", about.removeNews);
 app.post("/about/:page/:id/post", about.submit);
 
-app.get("/admin-panel", admin_panel.list);
-app.get("/admin-panel/:id/del", admin_panel.removeUser);
-app.get("/admin-panel/:id", admin_panel.id);
-app.post("/admin-panel/:id/ch", admin_panel.changeUser);
+app.get("/admin-panel/:page", admin_panel.form);
+app.get("/admin-panel/:page/:id/delUser", admin_panel.removeUser);
+app.get("/admin-panel/:page/:id/change", admin_panel.id);
+app.post("/admin-panel/:page/:id/ch", admin_panel.changeUser);
 
-app.get("/admin-panel/register", admin_panel.reg);
+app.get("/admin-panel/:page/:id/delNews", admin_panel.removeNews);
+app.get("/admin-panel/:page/:id/form", admin_panel.submitForm);
+app.post("/admin-panel/:page/:id/post", admin_panel.submit);
+app.post("/admin-panel/:page/:id/changeNews", admin_panel.changeNews);
+
+app.get("/admin-panel/:page/:id/delFeed", admin_panel.removeFeed);
+
+app.get("/admin-panel/:page/register", admin_panel.reg);
 app.get("/login", login.form);
 
 app.post("/feedback", forms.submit);
 
-app.post("/admin-panel/register", register.submit);
+app.post("/admin-panel/:page/register", register.submit);
 
 app.get("/logout", login.logout);
 app.post("/login", login.submit);

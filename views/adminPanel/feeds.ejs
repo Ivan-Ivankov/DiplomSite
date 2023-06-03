@@ -1,0 +1,39 @@
+<section class="feeds">
+    <div class="first fs20 semi-bold">
+        <div class="name">
+            <p>Имя</p>
+        </div>
+        <div class="text">
+            <p>Сообщение</p>
+        </div>
+        <div class="emailAndNum">
+            <p>Телефон\Email</p>
+        </div>
+        <div class="date">
+            <p>Дата создания</p>
+        </div>
+        <div class="delete">
+            <p>Удаление</p>
+        </div>
+    </div>
+  <% feeds.forEach((feed)=>{ %>
+  <div class="feeds-content">
+    <div class="name">
+      <p><%= feed.name %></p>
+    </div>
+    <div class="text">
+      <pre><%= feed.textarea %></pre>
+    </div>
+    <div class="emailAndNum">
+      <p><%= feed.number %></p>
+      <p><%= feed.email %></pre>
+    </div>
+    <div class="date">
+      <p><%= feed.date %></p>
+    </div>
+    <div class="delete">
+      <a href="/admin-panel/feed/<%= feed.id %>/del">Удалить</a>
+    </div>
+  </div>
+  <% }) %>
+</section>

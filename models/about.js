@@ -46,6 +46,31 @@ class About {
   static newsList(cb) {
     db.all("SELECT * FROM news", cb);
   }
+
+  static change(id, data, cb) {
+    About.findByID(id, (err, news) => {
+      if (err) return cb(err);
+      if (!news) return cb();
+
+      const today = new Date();
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      };
+      const now = today.toLocaleString("ru-RU", options);
+
+      const sql =
+        "UPDATE news SET name = ?, theme = ?, text = ?, time = ? WHERE id = ?";
+
+      db.serialize(() => {
+        db.run(sql, data.name, theme, data.text, data.time, id, cb);
+      });
+    });
+  }
 }
 
 module.exports = About;

@@ -1,0 +1,77 @@
+<section class="news">
+
+<div class="content">
+  <a class="btn" href="/admin-panel/news/<%= locals.user.id %>/form">Создать</a>
+  <% news.reverse().forEach((elem) => { %>
+  <div class="content-text">
+    <a class="krest-news" title="Удалить" href="/admin-panel/news/<%= elem.id %>/delNews">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        id="Capa_1"
+        x="0px"
+        y="0px"
+        viewBox="0 0 512.021 512.021"
+        style="enable-background: new 0 0 512.021 512.021"
+        xml:space="preserve"
+        width="16"
+        height="16"
+      >
+        <g>
+          <path
+            d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"
+          />
+        </g>
+      </svg>
+    </a>
+
+    <p class="who semi-bold fs20">
+      От: <%= elem.name %> / 
+      <span class="red fs18"><%= elem.role %></span>
+    </p>
+    <div class="text-area">
+      <p class="news-theme semi-bold"><%= elem.theme %></p>
+      <p class="news-text"><%= elem.text %></p>
+      <p class="news-time fs14"><%= elem.time %></p>
+    </div>
+  </div>
+
+  <% }) %>
+  </section>
+  <!--  -->
+  <% if (id) { %>
+  <section class="formSubmit">
+    <div class="back"></div>
+    <form action="/admin-panel/news/<%= locals.user.id %>/post" method="post">
+      <a class="krest" href="/admin-panel/news">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          id="Capa_1"
+          x="0px"
+          y="0px"
+          viewBox="0 0 512.021 512.021"
+          style="enable-background: new 0 0 512.021 512.021"
+          xml:space="preserve"
+          width="20"
+          height="20"
+        >
+          <g>
+            <path
+              d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"
+            />
+          </g>
+        </svg>
+      </a>
+      <p class="semi-bold fs24">Создание записи</p>
+      <label class="fs18" for="theme">Тема новости</label>
+      <input type="text" name="theme" id="theme" />
+      <label class="fs18" for="text">Текст новости</label>
+      <textarea name="text" id="text" cols="30" rows="10"></textarea>
+      <button class="btn" type="submit">Создать запись</button>
+    </form>
+  </section>
+</div>
+<% } %>

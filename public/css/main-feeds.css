@@ -1,0 +1,104 @@
+.feeds {
+  max-width: 1040px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feeds-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid gray;
+  transition: 0.4s all;
+}
+
+.first {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid gray;
+  transition: 0.4s all;
+}
+
+.first div {
+  background-color: #f0f0f0;
+  width: 100%;
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: -2px;
+  text-align: center;
+}
+
+.feeds-content:first-child {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.feeds-content div {
+  background-color: #f0f0f0;
+  width: 100%;
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: -2px;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  max-width: 140px;
+}
+
+.date {
+  max-width: 100px;
+}
+
+.emailAndNum {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 160px;
+}
+
+.emailAndNum p {
+  margin: 2px 0;
+}
+
+.delete {
+  display: flex;
+  justify-content: center;
+  max-width: 80px;
+}
+
+.feeds-content:hover {
+  transform: scale(1.01);
+}
+
+pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.feeds-content a {
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #00a7cc;
+  transition: 0.4s;
+}
+
+.feeds-content a:hover {
+  background-color: #e0e0e0;
+}
+
+.feeds-content a:active {
+  background-color: #003e4d;
+}

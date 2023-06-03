@@ -1,0 +1,63 @@
+main {
+  position: relative;
+  padding: 20px 0 40px 0;
+  background-color: #f0f0f0;
+  border-radius: 0 10px 10px 10px;
+  box-shadow: 0 2px 3px rgb(165, 165, 165);
+  z-index: 1;
+}
+
+.menu ul {
+  position: relative;
+  max-width: 350px;
+  display: flex;
+  list-style: none;
+  margin-top: 20px;
+  z-index: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  transition: 0.4s;
+}
+
+.active {
+  /* margin: 4px 0; */
+  padding: 4px;
+  border-radius: 10px 10px 0 0;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 3px rgb(165, 165, 165);
+  animation: aboba 0.4s;
+}
+
+@keyframes aboba {
+  from {
+    padding: 0;
+  }
+  to {
+    padding: 4px;
+  }
+}
+
+a:hover + .active {
+  animation: aboba2 0.4s;
+}
+
+@keyframes aboba2 {
+  from {
+    opacity: 100;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.active a {
+  color: #00a7cc;
+}
+
+.menu a:hover {
+  color: #00a7cc;
+}

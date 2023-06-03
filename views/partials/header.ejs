@@ -11,7 +11,7 @@
     <% if (locals.user) { %> 
       <div class="header-menu semi-bold">
         <p>Вы вошли как:<span class="login"> <%= user.name %> </span></p> 
-        <% if (locals.user.role === "admin") { %><a class="regist semi-bold" href="/admin-panel">Панель админа</a><% } %>
+        <% if (locals.user.role === "admin") { %><a class="regist semi-bold" href="/admin-panel/users">Панель админа</a><% } %>
         <a class="semi-bold" href="/logout">Выйти</a>
       </div>
     <% } else { %>
