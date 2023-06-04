@@ -4,7 +4,7 @@ const db = new sqlite3.Database("dbApp.db");
 
 db.serialize(() => {
   const stmt =
-    "CREATE TABLE IF NOT EXISTS news (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, role TEXT, theme TEXT, text TEXT, time TEXT)";
+    "CREATE TABLE IF NOT EXISTS news (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, seminame TEXT, role TEXT, theme TEXT, text TEXT, time TEXT)";
   db.run(stmt);
 });
 
@@ -13,7 +13,7 @@ class About {
 
   static createNews(data, id, cb) {
     const sql =
-      "INSERT INTO news (name, role, theme, text, time) VALUES ( ?, ?, ?, ?, ?)";
+      "INSERT INTO news (name, seminame, role, theme, text, time) VALUES (?, ?, ?, ?, ?, ?)";
 
     const today = new Date();
     const options = {
@@ -30,7 +30,16 @@ class About {
       if (err) return next(err);
       if (!user) return next();
       db.serialize(() => {
-        db.run(sql, user.name, user.role, data.theme, data.text, now, cb);
+        db.run(
+          sql,
+          user.name,
+          user.seminame,
+          user.role,
+          data.theme,
+          data.text,
+          now,
+          cb
+        );
       });
     });
   }
@@ -63,11 +72,10 @@ class About {
       };
       const now = today.toLocaleString("ru-RU", options);
 
-      const sql =
-        "UPDATE news SET name = ?, theme = ?, text = ?, time = ? WHERE id = ?";
+      const sql = "UPDATE news SET theme = ?, text = ?, time = ? WHERE id = ?";
 
       db.serialize(() => {
-        db.run(sql, data.name, theme, data.text, data.time, id, cb);
+        db.run(sql, data.theme, data.text, data.time, id, cb);
       });
     });
   }

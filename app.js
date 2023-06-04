@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
   res.render("index", { title: "Выборг-Монтаж" });
 });
 app.get("/forUsers/:page", forUsers.form);
-app.get("/forUsers/:page/:name", forUsers.form);
+app.get("/forUsers/:page/:login", forUsers.form);
 
 app.get("/about/:page", about.form);
 app.get("/about/:page/:id", about.submitForm);
@@ -45,6 +45,7 @@ app.post("/admin-panel/:page/:id/ch", admin_panel.changeUser);
 app.get("/admin-panel/:page/:id/delNews", admin_panel.removeNews);
 app.get("/admin-panel/:page/:id/form", admin_panel.submitForm);
 app.post("/admin-panel/:page/:id/post", admin_panel.submit);
+app.get("/admin-panel/:page/:id/changeNews", admin_panel.changeNewsForm);
 app.post("/admin-panel/:page/:id/changeNews", admin_panel.changeNews);
 
 app.get("/admin-panel/:page/:id/delFeed", admin_panel.removeFeed);

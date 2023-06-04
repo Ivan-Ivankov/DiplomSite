@@ -4,6 +4,7 @@ const About = require("../models/about");
 
 const id = 0;
 const reg = false;
+const newsId = false;
 
 // exports.list = function (req, res, next) {
 //   User.selectAll((err, users) => {
@@ -51,6 +52,7 @@ exports.form = (req, res, next) => {
           title: "Панель админа",
           news: news,
           page: page,
+          changeId: newsId,
           id: id,
         });
       });
@@ -74,6 +76,7 @@ exports.submitForm = (req, res, next) => {
     res.render("admin_panel", {
       title: "Панель админа",
       news: news,
+      changeId: newsId,
       page: page,
       id: id,
     });
@@ -100,10 +103,29 @@ exports.submit = (req, res, next) => {
 
 exports.changeNews = (req, res, next) => {
   const newsId = req.params.id;
-  const data = req.body.user;
+  const data = req.body;
   About.change(newsId, data, (err) => {
     if (err) return next(err);
     res.redirect("/admin-panel/news");
+  });
+};
+
+exports.changeNewsForm = (req, res, next) => {
+  const newsId = req.params.id;
+  const page = req.params.page;
+  About.findByID(newsId, (err, newes) => {
+    if (err) return next(err);
+    About.newsList((err, news) => {
+      if (err) return next(err);
+      res.render("admin_panel", {
+        title: "Панель админа",
+        newes: newes,
+        news: news,
+        page: page,
+        changeId: newsId,
+        id: id,
+      });
+    });
   });
 };
 

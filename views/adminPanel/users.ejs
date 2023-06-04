@@ -1,25 +1,29 @@
 <section class="show-users">
   <div class="show-users-content center">
-    <p class="center semi-bold fs24">Список сотрудников</p>
     <table cellspacing="0" class="users">
+      <tr class="first semi-bold fs24">
+        <td>Список сотрудников</td>
+      </tr>
       <tr class="semi-bold fs20">
-        <td style="padding: 10px 50px">id</td>
+        <td style="padding: 10px 20px">id</td>
+        <td>Имя и фамилия</td>
         <td>Логин</td>
         <td>Email</td>
-        <td>Роль</td>
+        <td style="max-width: 120px; padding: 5px">Роль</td>
         <td>Дата создания</td>
         <td>Дополнительно</td>
       </tr>
       <% admin_panel.forEach((user)=>{ %>
       <!--  -->
       <tr class="fs18">
-        <td style="padding: 10px 50px" id="sss"><%= user.id %></td>
-        <td><%= user.name %></td>
+        <td style="padding: 10px 20px" id="sss"><%= user.id %></td>
+        <td><%= user.name %> <%= user.seminame %></td>
+        <td><%= user.login %></td>
         <td><%= user.email %></td>
-        <td><%= user.role %></td>
+        <td style="max-width: 120px; padding: 5px"><%= user.role %></td>
         <td><%= user.time %></td>
         <td>
-          <a href="/admin-panel/<%= page %>/<%= user.id %>/del">Удалить</a>
+          <a href="/admin-panel/<%= page %>/<%= user.id %>/delUser">Удалить</a>
           /
           <a href="/admin-panel/<%= page %>/<%= user.id %>/change">Изменить</a>
         </td>
@@ -28,7 +32,9 @@
       <% }) %>
     </table>
     <button class="create btn center">
-      <a href="/admin-panel/users/register">Создать пользователя</a>
+      <a class="fs20" href="/admin-panel/users/register"
+        >Создать пользователя</a
+      >
     </button>
   </div>
 </section>
@@ -59,17 +65,38 @@
       </svg>
     </a>
     <form class="center" action="/admin-panel/users/<%= id %>/ch" method="post">
-      <p class="semi-bold fs24">Изменение пользователя: <%= user.name %></p>
+      <p class="semi-bold fs24">Изменение пользователя: <%= user.login %></p>
       <hr />
-      <label for="inputName">Логин</label>
+
+      <label for="inputName">Имя</label>
       <input
         required
         type="text"
         class="form-control"
         name="user[name]"
         id="inputName"
-        placeholder="Username"
+        placeholder="Имя"
         value="<%= user.name %>"
+      />
+      <label for="inputName">Фамилия</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="user[seminame]"
+        id="inputName"
+        placeholder="Фамилия"
+        value="<%= user.seminame %>"
+      />
+      <label for="inputName">Логин</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="user[login]"
+        id="inputName"
+        placeholder="Логин"
+        value="<%= user.login %>"
       />
       <label for="inputPass">Пароль</label>
       <input
@@ -144,14 +171,32 @@
       <p class="semi-bold fs24">Создание пользователя</p>
 
       <hr />
-      <label for="inputName">Логин</label>
+      <label for="inputName">Имя</label>
       <input
         required
         type="text"
         class="form-control"
         name="user[name]"
         id="inputName"
-        placeholder="Username"
+        placeholder="Имя"
+      />
+      <label for="inputName">Фамилия</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="user[seminame]"
+        id="inputName"
+        placeholder="Фамилия"
+      />
+      <label for="inputName">Логин</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="user[login]"
+        id="inputName"
+        placeholder="Логин"
       />
       <label for="inputPass">Пароль</label>
       <input
@@ -159,7 +204,7 @@
         class="form-control"
         name="user[password]"
         id="inputPass"
-        placeholder="Password"
+        placeholder="Пароль"
         required
       />
       <label for="inputPass">Email</label>

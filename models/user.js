@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 db.serialize(() => {
   const stmt =
-    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, password, email TEXT, role TEXT, time TEXT)";
+    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, login TEXT UNIQUE, name TEXT, seminame TEXT, password, email TEXT, role TEXT, time TEXT)";
   db.run(stmt);
 });
 
@@ -13,7 +13,7 @@ class User {
   //запись в базу юзера
   static create(data, cb) {
     const sql =
-      "INSERT INTO users (name, password, email, role, time) VALUES ( ?, ?, ?, ?, ?)";
+      "INSERT INTO users (login, name, seminame, password, email, role, time) VALUES (?, ?, ?, ?, ?, ?, ?)";
     const saltRounds = 10;
     const today = new Date();
 
@@ -33,26 +33,36 @@ class User {
         if (err) return next(err);
 
         db.serialize(() => {
-          db.run(sql, data.name, hash, data.email, data.role, now, cb);
+          db.run(
+            sql,
+            data.login,
+            data.name,
+            data.seminame,
+            hash,
+            data.email,
+            data.role,
+            now,
+            cb
+          );
         });
       });
     });
   }
 
   //поиск юзера в базе
-  static findByName(username, cb) {
-    db.get("SELECT * FROM users WHERE name = ?", username, cb);
+  static findByName(login, cb) {
+    db.get("SELECT * FROM users WHERE login = ?", login, cb);
   }
   static findByID(id, cb) {
     db.get("SELECT * FROM users WHERE id = ?", id, cb);
   }
   //проверка аутентификации
-  static authentificate(name, password, cb) {
-    User.findByName(name, (err, user) => {
+  static authentificate(login, password, cb) {
+    User.findByName(login, (err, user) => {
       if (err) return cb(err);
       if (!user) return cb();
       bcrypt.compare(password, user.password, (err, result) => {
-        if (result) return cb(null, user);
+        if (result) return cb(null, login);
         cb();
       });
     });
@@ -69,7 +79,7 @@ class User {
       if (!user) return cb();
 
       const sql =
-        "UPDATE users SET name = ?, password = ?, email = ?, role = ? WHERE id = ?";
+        "UPDATE users SET login = ?, name = ?, seminame = ?, password = ?, email = ?, role = ? WHERE id = ?";
 
       const saltRounds = 10;
 
@@ -80,7 +90,17 @@ class User {
           if (err) return next(err);
 
           db.serialize(() => {
-            db.run(sql, data.name, hash, data.email, data.role, id, cb);
+            db.run(
+              sql,
+              data.login,
+              data.name,
+              data.seminame,
+              hash,
+              data.email,
+              data.role,
+              id,
+              cb
+            );
           });
         });
       });

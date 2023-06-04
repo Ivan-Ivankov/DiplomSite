@@ -5,10 +5,6 @@
         <a href="/">Главная</a>
         <p class="gray">/ <%= title %> / Новости</p>
       </div>
-      <% if (locals.user.role === "admin" || locals.user.role === "moderator") {
-      %>
-      <a class="btn" href="/about/news/<%= locals.user.id %>">Создать</a>
-      <% } %>
       <p class="semi-bold fs24">Новости</p>
       <hr />
 
@@ -43,7 +39,7 @@
         </a>
         <% } %>
         <p class="who semi-bold fs20">
-          От: <%= elem.name %> / <% if (elem.role === "admin") { %>
+          От: <%= elem.name %> <%= elem.seminame %> / <% if (elem.role === "admin") { %>
           <span class="red fs18"><%= elem.role %></span>
           <% } else { %>
           <span class="green fs18"><%= elem.role %></span>
@@ -55,8 +51,12 @@
           <p class="news-time fs14"><%= elem.time %></p>
         </div>
       </div>
-
+      
       <% }) %>
+      <% if (locals.user.role === "admin" || locals.user.role === "moderator") {
+        %>
+        <a class="btn" href="/about/news/<%= locals.user.id %>">Создать новость</a>
+        <% } %>
       <!--  -->
       <% if (id) { %>
       <section class="formSubmit">
@@ -90,6 +90,7 @@
           <textarea name="text" id="text" cols="30" rows="10"></textarea>
           <button class="btn" type="submit">Создать запись</button>
         </form>
+        
       </section>
       <% } %>
       <!--  -->

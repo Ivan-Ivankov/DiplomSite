@@ -1,0 +1,179 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1040px;
+  margin: auto;
+}
+
+.content-text {
+  padding: 10px;
+  transition: all 0.4s;
+  box-shadow: 0 1px 5px rgb(212, 212, 212);
+  background-color: #ffffff;
+  border: 1px solid gray;
+}
+
+.content-text:hover {
+  transform: scale(1.02);
+}
+
+.text-area {
+  margin-left: 10px;
+  /* max-width: 1040px; */
+}
+
+.news-text {
+  /* max-width: 1040px; */
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.who p {
+  border-bottom: 1px solid #00a7cc;
+}
+
+.news-theme {
+  margin: 10px 0;
+}
+
+.news-time {
+  float: right;
+  width: auto;
+  margin: 10px 0;
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: #00a7cc;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  box-shadow: 0 1px 5px rgb(165, 165, 165);
+  margin: 20px auto;
+}
+
+.formSubmit {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.back {
+  position: fixed;
+  background-color: black;
+  opacity: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+form {
+  position: relative;
+  padding: 20px;
+  background-color: #ffffff;
+  margin: 80px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  max-height: 800px;
+  border: 2px solid #00a7cc;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px #00a7cc;
+  animation: aboba3 0.4s;
+}
+
+form label {
+  margin-top: 20px;
+  color: #656565;
+}
+
+form textarea,
+input {
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin: 10px 0;
+}
+
+.krest {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 8px 8px 6px 8px;
+  background-color: #00a7cc;
+  border: none;
+  border-radius: 0 10px 0 10px;
+}
+
+.content-text {
+  position: relative;
+}
+
+.krest-news {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 4px 4px 2px 4px;
+  background-color: #00a7cc;
+  border: none;
+  border-radius: 0 10px 0 10px;
+}
+
+.krest > svg,
+.krest-news > svg {
+  fill: #ffffff;
+}
+
+.krest:hover,
+.krest-news:hover {
+  background-color: #00809c;
+  cursor: pointer;
+}
+
+.krest:active,
+.krest-news:active {
+  background-color: #003e4d;
+}
+
+.changeBtn {
+  float: right;
+  margin-top: -6px;
+  margin-right: 40px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #00a7cc;
+  transition: 0.4s;
+}
+
+.changeBtn:hover {
+  background-color: #e0e0e0;
+}
+
+.feeds-content:hover {
+  transform: scale(1.01);
+}
+
+.first {
+  display: flex;
+  border: 1px solid gray;
+  text-align: center;
+  justify-content: center;
+  background: #00a7cc;
+  box-shadow: 0 0 5px #00a7cc;
+  color: #ffffff;
+  border-radius: 10px 10px 0 0;
+  padding: 20px 0;
+}

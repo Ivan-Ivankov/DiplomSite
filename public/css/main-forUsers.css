@@ -44,6 +44,10 @@
   margin-left: 8px;
 }
 
+.content-text:hover {
+  transform: scale(1.02);
+}
+
 .way {
   margin-bottom: 20px;
 }
@@ -62,6 +66,7 @@
   width: 100%;
   margin-bottom: 10px;
   border-bottom: 1px solid black;
+  transition: all 0.4s;
 }
 
 .text-area {

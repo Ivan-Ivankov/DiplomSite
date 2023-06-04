@@ -6,10 +6,10 @@ exports.form = (req, res) => {
 
 exports.submit = (req, res, next) => {
   const data = req.body.user;
-  User.authentificate(data.name, data.password, (err, user) => {
+  User.authentificate(data.login, data.password, (err, user) => {
     if (err) return next(err);
     if (user) {
-      req.session.uname = user.name;
+      req.session.uname = user;
       res.redirect("/");
     } else {
       res.error("Логин или Пароль не верный");

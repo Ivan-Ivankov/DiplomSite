@@ -6,7 +6,7 @@ exports.form = (req, res) => {
 
 exports.submit = (req, res, next) => {
   const data = req.body.user;
-  User.findByName(data.name, (err, user) => {
+  User.findByName(data.login, (err, user) => {
     if (err) return next(err);
     if (user) {
       res.error("Такой пользователь в базе уже есть");

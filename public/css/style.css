@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Lato", sans-serif;
+  font-family: sans-serif;
 }
 
 .center {
@@ -305,6 +305,10 @@ header a:hover {
 .header-menu a:hover {
   background-color: #00a7cc;
   padding: 0;
+}
+header a:active {
+  background-color: #003e4d;
+  padding: 6px;
 }
 
 .btn:hover {

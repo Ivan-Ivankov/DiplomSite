@@ -39,8 +39,8 @@ exports.form = (req, res, next) => {
   const page = req.params.page;
   switch (page) {
     case "profile":
-      const name = req.params.name;
-      User.findByName(name, (err, user) => {
+      const login = req.params.login;
+      User.findByName(login, (err, user) => {
         if (err) return next(err);
         res.render("forUsers", {
           title: "Для сотрудников",
