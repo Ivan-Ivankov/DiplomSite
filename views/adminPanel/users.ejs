@@ -28,7 +28,6 @@
           <a href="/admin-panel/<%= page %>/<%= user.id %>/change">Изменить</a>
         </td>
       </tr>
-
       <% }) %>
     </table>
     <button class="create btn center">
@@ -171,31 +170,38 @@
       <p class="semi-bold fs24">Создание пользователя</p>
 
       <hr />
-      <label for="inputName">Имя</label>
-      <input
-        required
-        type="text"
-        class="form-control"
-        name="user[name]"
-        id="inputName"
-        placeholder="Имя"
-      />
-      <label for="inputName">Фамилия</label>
-      <input
-        required
-        type="text"
-        class="form-control"
-        name="user[seminame]"
-        id="inputName"
-        placeholder="Фамилия"
-      />
-      <label for="inputName">Логин</label>
+      <div class="fio">
+        <div>
+          <label for="inputName">Имя сотрудника</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            name="user[name]"
+            id="inputName"
+            placeholder="Имя"
+          />
+        </div>
+        <div>
+          <label for="inputSemiName">Фамилия сотрудника</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            name="user[seminame]"
+            id="inputSemiName"
+            placeholder="Фамилия"
+          />
+        </div>
+      </div>
+      <label for="inputLogin">Логин</label>
       <input
         required
         type="text"
         class="form-control"
         name="user[login]"
-        id="inputName"
+        id="inputLogin"
+        value="user<%= admin_panel.at(-1).id + 1 %>"
         placeholder="Логин"
       />
       <label for="inputPass">Пароль</label>
@@ -207,18 +213,18 @@
         placeholder="Пароль"
         required
       />
-      <label for="inputPass">Email</label>
+      <label for="inputEmail">Email</label>
       <input
         type="email"
         class="form-control"
         name="user[email]"
-        id="inputPass"
+        id="inputEmail"
         placeholder="Email"
         required
       />
       <div class="role">
-        <label for="role">Роль пользователя:</label>
-        <select name="user[role]" id="role">
+        <label for="inputRole">Роль пользователя:</label>
+        <select name="user[role]" id="inputRole">
           <option value="user">user</option>
           <option value="admin">admin</option>
           <option value="moderator">moderator</option>

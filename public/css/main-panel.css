@@ -13,6 +13,7 @@
   justify-content: center;
   margin: auto;
   background-color: #ffffff;
+  border-radius: 10px 10px 0 0;
 }
 
 .first {
@@ -23,8 +24,8 @@
   align-items: center;
   background: #00a7cc;
   box-shadow: 0 0 5px #00a7cc;
-  color: #ffffff;
   border-radius: 10px 10px 0 0;
+  color: #ffffff;
 }
 
 .first {
@@ -35,7 +36,13 @@
   border: 1px solid gray;
   padding: 10px 20px;
   text-align: center;
+  /* background-color: #ffffff; */
 }
+
+/* .users td:first-child {
+  background: #00a7cc;
+  color: #ffffff;
+} */
 
 .btn {
   /* position: relative; */
@@ -90,6 +97,17 @@ a {
 
 /*  */
 
+.fio {
+  display: flex;
+}
+
+.fio div {
+  display: flex;
+  flex-direction: column;
+  margin: 0 6px;
+  text-align: center;
+}
+
 .register {
   position: absolute;
   width: 100%;
@@ -118,7 +136,7 @@ a {
   margin-top: -300px;
   background-color: #ffffff;
   padding: 50px;
-  max-width: 300px;
+  max-width: 1000px;
   border: 2px solid #00a7cc;
   border-radius: 10px;
   box-shadow: 0 1px 5px #00a7cc;

@@ -10,12 +10,12 @@
     </div>
     <% feeds.forEach((feed)=>{ %>
     <div class="feeds-content">
-      <!-- <div class="name fs18">
-        <p><%= feed.name %></p>
-      </div> -->
       <div class="innerText">
         <div class="">
-          <p class="fs18 semi-bold">Текст сообщения</p>
+          <p class="fs18 semi-bold" style="margin-bottom: 20px">
+            От пользователя: <%= feed.name %>.
+          </p>
+          <p class="fs18 semi-bold">Текст сообщения:</p>
           <pre>
 <%= feed.textarea %>
 
