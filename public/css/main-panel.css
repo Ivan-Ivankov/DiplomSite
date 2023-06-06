@@ -29,20 +29,20 @@
 }
 
 .first {
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .users td {
   border: 1px solid gray;
   padding: 10px 20px;
   text-align: center;
-  /* background-color: #ffffff; */
+  background-color: #ffffff;
 }
 
-/* .users td:first-child {
+.first td {
   background: #00a7cc;
   color: #ffffff;
-} */
+}
 
 .btn {
   /* position: relative; */

@@ -4,8 +4,11 @@ const bcrypt = require("bcrypt");
 
 db.serialize(() => {
   const stmt =
-    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, login TEXT UNIQUE, name TEXT, seminame TEXT, password, email TEXT, role TEXT, time TEXT)";
+    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, login TEXT UNIQUE, name TEXT, seminame TEXT, surname TEXT, password, email TEXT, role TEXT, jobTitle TEXT, time TEXT)";
+  const sstmt =
+    " CREATE TABLE IF NOT EXISTS job_titles (id INTEGER PRIMARY KEY AUTOINCREMENT, job_title TEXT UNIQUE)";
   db.run(stmt);
+  db.run(sstmt);
 });
 
 class User {
@@ -13,7 +16,7 @@ class User {
   //запись в базу юзера
   static create(data, cb) {
     const sql =
-      "INSERT INTO users (login, name, seminame, password, email, role, time) VALUES (?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO users (login, name, seminame, surname, password, email, role, jobTitle, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const saltRounds = 10;
     const today = new Date();
 
@@ -38,9 +41,11 @@ class User {
             data.login,
             data.name,
             data.seminame,
+            data.surname,
             hash,
             data.email,
             data.role,
+            data.jobTitle,
             now,
             cb
           );
@@ -79,7 +84,7 @@ class User {
       if (!user) return cb();
 
       const sql =
-        "UPDATE users SET login = ?, name = ?, seminame = ?, password = ?, email = ?, role = ? WHERE id = ?";
+        "UPDATE users SET login = ?, name = ?, seminame = ?, surname = ?, password = ?, email = ?, role = ?, jobTitle = ? WHERE id = ?";
 
       const saltRounds = 10;
 
@@ -95,9 +100,11 @@ class User {
               data.login,
               data.name,
               data.seminame,
+              data.surname,
               hash,
               data.email,
               data.role,
+              data.jobTitle,
               id,
               cb
             );
@@ -105,6 +112,24 @@ class User {
         });
       });
     });
+  }
+  static createJobTitle(data, cb) {
+    const sql = "INSERT INTO job_titles (job_title) VALUES (?)";
+    db.serialize(() => {
+      db.run(sql, data.jobTitle, cb);
+    });
+  }
+
+  static jobTitleList(cb) {
+    db.all("SELECT * FROM job_titles", cb);
+  }
+
+  static findJobTitle(jobTitle, cb) {
+    db.get("SELECT * FROM job_titles WHERE job_title = ?", jobTitle, cb);
+  }
+
+  static deleteTitle(id, cb) {
+    db.get("DELETE FROM job_titles WHERE id = ?", id, cb);
   }
 }
 module.exports = User;

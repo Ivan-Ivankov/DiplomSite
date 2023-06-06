@@ -2,9 +2,10 @@ const User = require("../models/user");
 const Feedback = require("../models/feedback");
 const About = require("../models/about");
 
-const id = 0;
+const id = false;
 const reg = false;
 const newsId = false;
+const job = false;
 
 // exports.list = function (req, res, next) {
 //   User.selectAll((err, users) => {
@@ -24,12 +25,17 @@ exports.form = (req, res, next) => {
     case "users":
       User.selectAll((err, users) => {
         if (err) return next(err);
-        res.render("admin_panel", {
-          title: "Панель админа",
-          admin_panel: users,
-          reg: reg,
-          id: id,
-          page: page,
+        User.jobTitleList((err, jobTitles) => {
+          if (err) return next(err);
+          res.render("admin_panel", {
+            title: "Панель админа",
+            admin_panel: users,
+            page: page,
+            id: id,
+            reg: reg,
+            job: job,
+            jobTitles: jobTitles,
+          });
         });
       });
       break;
@@ -101,6 +107,50 @@ exports.submit = (req, res, next) => {
   });
 };
 
+exports.createJobTitleForm = (req, res, next) => {
+  const page = req.params.page;
+  const job = 1;
+  User.selectAll((err, users) => {
+    if (err) return next(err);
+    User.jobTitleList((err, jobTitles) => {
+      if (err) return next(err);
+      res.render("admin_panel", {
+        title: "Панель админа",
+        admin_panel: users,
+        page: page,
+        id: id,
+        reg: reg,
+        job: job,
+        jobTitles: jobTitles,
+      });
+    });
+  });
+};
+
+exports.createJobTitle = (req, res, next) => {
+  const data = req.body;
+  User.findJobTitle(data.jobTitle, (err, title) => {
+    if (err) return next(err);
+    if (title) {
+      res.error("Такая должность в базе уже есть");
+      res.redirect("/admin-panel/users/jobs");
+    } else {
+      User.createJobTitle(data, (err) => {
+        if (err) return next(err);
+        res.redirect("/admin-panel/users/jobs");
+      });
+    }
+  });
+};
+
+exports.deleteTitle = (req, res, next) => {
+  const jobId = req.params.id;
+  User.deleteTitle(jobId, (err) => {
+    if (err) return next(err);
+  });
+  res.redirect("/admin-panel/users/jobs");
+};
+
 exports.changeNews = (req, res, next) => {
   const newsId = req.params.id;
   const data = req.body;
@@ -146,13 +196,18 @@ exports.id = (req, res, next) => {
     User.findByID(id, (err, user) => {
       if (err) return next(err);
       if (!user) return next();
-      res.render("admin_panel", {
-        title: "Панель админа",
-        admin_panel: users,
-        reg: reg,
-        user: user,
-        id: id,
-        page: page,
+      User.jobTitleList((err, jobTitles) => {
+        if (err) return next(err);
+        res.render("admin_panel", {
+          title: "Панель админа",
+          admin_panel: users,
+          page: page,
+          id: id,
+          reg: reg,
+          user: user,
+          job: job,
+          jobTitles: jobTitles,
+        });
       });
     });
   });
@@ -163,19 +218,24 @@ exports.reg = (req, res, next) => {
   const page = req.params.page;
   User.selectAll((err, users) => {
     if (err) return next(err);
-    res.render("admin_panel", {
-      title: "Панель админа",
-      admin_panel: users,
-      reg: reg,
-      id: id,
-      page: page,
+    User.jobTitleList((err, jobTitles) => {
+      if (err) return next(err);
+      res.render("admin_panel", {
+        title: "Панель админа",
+        admin_panel: users,
+        page: page,
+        id: id,
+        reg: reg,
+        id: id,
+        job: job,
+        jobTitles: jobTitles,
+      });
     });
   });
 };
 
 exports.removeFeed = (req, res, next) => {
   const feedid = req.params.id;
-  console.log(feedid);
   Feedback.deleteFeed(feedid, (err) => {
     if (err) return next(err);
   });

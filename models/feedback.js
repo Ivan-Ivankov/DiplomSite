@@ -29,7 +29,7 @@ class Feedback {
     db.all("SELECT * FROM feedback_db", cb);
   }
   static deleteFeed(id, cb) {
-    db.get("DELETE feedback_db WHERE id = ?", id, cb);
+    db.get("DELETE FROM feedback_db WHERE id = ?", id, cb);
   }
 }
 module.exports = Feedback;

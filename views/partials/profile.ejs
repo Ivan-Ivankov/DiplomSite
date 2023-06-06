@@ -1,8 +1,11 @@
 <div class="content">
   <img src="/img/no_icon.png" alt="" />
   <div class="content-text">
-    <p><%= user.name %> <%= user.seminame %></p>
+    <h3>ФИО сотрудника:</h3>
+    <p><%= user.seminame %> <%= user.name %> <%= user.surname %></p>
+    <h3>Роль сотрудника:</h3>
     <p><%= user.role %></p>
+    <h3>Дата создания профиля:</h3>
     <p><%= user.time %></p>
   </div>
 </div>

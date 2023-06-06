@@ -1,3 +1,5 @@
+<% if (page === "users") { %>
+
 <section class="show-users">
   <div class="show-users-content center">
     <table cellspacing="0" class="users">
@@ -6,23 +8,25 @@
       </tr>
       <tr class="semi-bold fs20">
         <td style="padding: 10px 20px">id</td>
-        <td>Имя и фамилия</td>
+        <td>ФИО сотрудника</td>
         <td>Логин</td>
         <td>Email</td>
         <td style="max-width: 120px; padding: 5px">Роль</td>
-        <td>Дата создания</td>
-        <td>Дополнительно</td>
+        <td style="max-width: 120px; padding: 5px">Должность</td>
+        <td style="padding: 5px">Дата создания</td>
+        <td style="padding: 5px">Дополнительно</td>
       </tr>
       <% admin_panel.forEach((user)=>{ %>
       <!--  -->
       <tr class="fs18">
         <td style="padding: 10px 20px" id="sss"><%= user.id %></td>
-        <td><%= user.name %> <%= user.seminame %></td>
+        <td><%= user.seminame %> <%= user.name %> <%= user.surname %></td>
         <td><%= user.login %></td>
         <td><%= user.email %></td>
         <td style="max-width: 120px; padding: 5px"><%= user.role %></td>
-        <td><%= user.time %></td>
-        <td>
+        <td style="max-width: 120px; padding: 5px"><%= user.jobTitle %></td>
+        <td style="padding: 5px"><%= user.time %></td>
+        <td style="padding: 5px">
           <a href="/admin-panel/<%= page %>/<%= user.id %>/delUser">Удалить</a>
           /
           <a href="/admin-panel/<%= page %>/<%= user.id %>/change">Изменить</a>
@@ -30,11 +34,18 @@
       </tr>
       <% }) %>
     </table>
-    <button class="create btn center">
-      <a class="fs20" href="/admin-panel/users/register"
-        >Создать пользователя</a
-      >
-    </button>
+    <div style="display: flex">
+      <button class="create btn center">
+        <a class="fs20" href="/admin-panel/<%= page %>/register"
+          >Создать пользователя</a
+        >
+      </button>
+      <button class="create btn center" style="margin-left: 16px">
+        <a class="fs20" href="/admin-panel/<%= page %>/jobs"
+          >Список должностей</a
+        >
+      </button>
+    </div>
   </div>
 </section>
 
@@ -42,7 +53,7 @@
 <section class="register">
   <div class="back"></div>
   <div class="register-content">
-    <a class="krest" href="/admin-panel/users">
+    <a class="krest" href="/admin-panel/<%= page %>">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -63,30 +74,49 @@
         </g>
       </svg>
     </a>
-    <form class="center" action="/admin-panel/users/<%= id %>/ch" method="post">
+    <form
+      class="center"
+      action="/admin-panel/<%= page %>/<%= id %>/ch"
+      method="post"
+    >
       <p class="semi-bold fs24">Изменение пользователя: <%= user.login %></p>
       <hr />
+      <div class="fio">
+        <div>
+          <label for="inputName">Имя сотрудника</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            name="user[name]"
+            id="inputName"
+            value="<%= user.name %>"
+            placeholder="Имя"
+          />
+        </div>
+        <div>
+          <label for="inputSemiName">Фамилия сотрудника</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            name="user[seminame]"
+            id="inputSemiName"
+            value="<%= user.seminame %>"
+            placeholder="Фамилия"
+          />
+        </div>
+      </div>
+      <label for="inputSurName">Отчество сотрудника (при наличии)</label>
+      <input
+        type="text"
+        class="form-control"
+        name="user[surname]"
+        id="inputSurName"
+        value="<%= user.surname %>"
+        placeholder="Отчетсво"
+      />
 
-      <label for="inputName">Имя</label>
-      <input
-        required
-        type="text"
-        class="form-control"
-        name="user[name]"
-        id="inputName"
-        placeholder="Имя"
-        value="<%= user.name %>"
-      />
-      <label for="inputName">Фамилия</label>
-      <input
-        required
-        type="text"
-        class="form-control"
-        name="user[seminame]"
-        id="inputName"
-        placeholder="Фамилия"
-        value="<%= user.seminame %>"
-      />
       <label for="inputName">Логин</label>
       <input
         required
@@ -124,6 +154,14 @@
           <option value="moderator">moderator</option>
         </select>
       </div>
+      <div class="role">
+        <label for="inputJobTitle">Должность пользователя:</label>
+        <select name="user[jobTitle]" id="inputJobTitle">
+          <% jobTitles.forEach((job)=>{ %>
+          <option value="<%= job.job_title %>"><%= job.job_title %></option>
+          <% }) %>
+        </select>
+      </div>
 
       <button class="btn" type="submit">Изменить</button>
     </form>
@@ -136,7 +174,7 @@
 <section class="register">
   <div class="back"></div>
   <div class="register-content">
-    <a class="krest" href="/admin-panel/users">
+    <a class="krest" href="/admin-panel/<%= page %>">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -157,7 +195,11 @@
         </g>
       </svg>
     </a>
-    <form class="center" action="/admin-panel/users/register" method="post">
+    <form
+      class="center"
+      action="/admin-panel/<%= page %>/register"
+      method="post"
+    >
       <% if (locals.messages) {%>
       <!--  -->
       <% messages.forEach((message) => { %>
@@ -194,6 +236,14 @@
           />
         </div>
       </div>
+      <label for="inputSurName">Отчество сотрудника (при наличии)</label>
+      <input
+        type="text"
+        class="form-control"
+        name="user[surname]"
+        id="inputSurName"
+        placeholder="Отчетсво"
+      />
       <label for="inputLogin">Логин</label>
       <input
         required
@@ -230,9 +280,90 @@
           <option value="moderator">moderator</option>
         </select>
       </div>
+      <div class="role">
+        <label for="inputJobTitle">Должность пользователя:</label>
+        <select name="user[jobTitle]" id="inputJobTitle">
+          <% jobTitles.forEach((job)=>{ %>
+          <option value="<%= job.job_title %>"><%= job.job_title %></option>
+          <% }) %>
+        </select>
+      </div>
 
       <button class="btn" type="submit">Создать</button>
     </form>
   </div>
 </section>
 <% } %>
+<!--  -->
+<% if (job) { %>
+<section class="register">
+  <div class="back"></div>
+  <div class="register-content">
+    <a class="krest" href="/admin-panel/<%= page %>">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        id="Capa_1"
+        x="0px"
+        y="0px"
+        viewBox="0 0 512.021 512.021"
+        style="enable-background: new 0 0 512.021 512.021"
+        xml:space="preserve"
+        width="20"
+        height="20"
+      >
+        <g>
+          <path
+            d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"
+          />
+        </g>
+      </svg>
+    </a>
+
+    <h2 align="center">Список должностей</h2>
+    <div class="jobsList" style="overflow: auto; max-height: 100px">
+      <% jobTitles.forEach((job)=>{ %>
+      <div
+        class="list"
+        style="
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1 solid gray;
+        "
+      >
+        <p style="margin-top: 8px"><%= job.job_title %></p>
+        <div style="margin-top: 8px">
+          <a href="/admin-panel/<%= page %>/jobs/<%= job.id %>/del">Удалить</a>
+        </div>
+      </div>
+
+      <% }) %>
+    </div>
+    <form class="center" action="/admin-panel/<%= page %>/jobs" method="post">
+      <% if (locals.messages) {%>
+      <!--  -->
+      <% messages.forEach((message) => { %>
+      <h2 class="center err <%= message.type %>"><%= message.string %></h2>
+      <% }) %>
+      <!--  -->
+      <% removeMessages() %>
+      <!--  -->
+      <% } %>
+      <p class="semi-bold fs24">Создание должности</p>
+
+      <hr />
+      <input
+        type="text"
+        class="form-control"
+        name="jobTitle"
+        id="inputJobTitle"
+        placeholder="Должность"
+        required
+      />
+
+      <button class="btn" type="submit">Создать</button>
+    </form>
+  </div>
+</section>
+<% }} %>

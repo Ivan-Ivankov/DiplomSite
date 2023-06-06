@@ -49,6 +49,9 @@ app.get("/admin-panel/:page/:id/changeNews", admin_panel.changeNewsForm);
 app.post("/admin-panel/:page/:id/changeNews", admin_panel.changeNews);
 
 app.get("/admin-panel/:page/:id/delFeed", admin_panel.removeFeed);
+app.get("/admin-panel/:page/jobs", admin_panel.createJobTitleForm);
+app.post("/admin-panel/:page/jobs", admin_panel.createJobTitle);
+app.get("/admin-panel/:page/jobs/:id/del", admin_panel.deleteTitle);
 
 app.get("/admin-panel/:page/register", admin_panel.reg);
 app.get("/login", login.form);
