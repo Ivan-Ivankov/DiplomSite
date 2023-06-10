@@ -23,32 +23,33 @@
         <div class="forUsers-content">
           <div class="menu">
             <ul>
-              <a href="/forUsers/profile/<%= locals.user.login %>"><li>Профиль</li></a>
+              <a href="/forUsers/profile/<%= locals.user.login %>"
+                ><li>Профиль</li></a
+              >
               <a href="/forUsers/documents"><li>Документы</li></a>
               <a href="/forUsers/chat"><li>Чат</li></a>
             </ul>
           </div>
           <!-- Если о компании -->
-      <% if (page === "profile") { %>
-            <!--  -->
-            <%- include("./partials/profile") -%>
-            <!--  -->
-        <% } %>
-  
-        <!-- Если новости -->
-        <% if (page === "documents") { %>
-        <!--  -->
-        <%- include("./partials/documents") -%>
-        <!--  -->
-        <% } %>
-  
-        <!-- Если контакты -->
-        <% if (page === "chat") { %>
-        <!--  -->
-        <%- include("./partials/chat") -%>
-        <!--  -->
-        <% } %>
-      </main>
+          <% if (page === "profile") { %>
+          <!--  -->
+          <%- include("./partials/profile") -%>
+          <!--  -->
+          <% } %>
+
+          <!-- Если новости -->
+          <% if (page === "documents") { %>
+          <!--  -->
+          <%- include("./partials/documents") -%>
+          <!--  -->
+          <% } %>
+
+          <!-- Если контакты -->
+          <% if (page === "chat") { %>
+          <!--  -->
+          <%- include("./partials/chat") -%>
+          <!--  -->
+          <% } %>
         </div>
       </section>
     </main>
