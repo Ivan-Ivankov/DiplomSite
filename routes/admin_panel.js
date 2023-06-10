@@ -63,6 +63,18 @@ exports.form = (req, res, next) => {
         });
       });
       break;
+    case "documents":
+      About.newsList((err, news) => {
+        if (err) return next(err);
+        res.render("admin_panel", {
+          title: "Панель админа",
+          news: news,
+          page: page,
+          changeId: newsId,
+          id: id,
+        });
+      });
+      break;
   }
 };
 
@@ -240,4 +252,9 @@ exports.removeFeed = (req, res, next) => {
     if (err) return next(err);
   });
   res.redirect("/admin-panel/feed");
+};
+
+exports.uploadFile = (req, res, next) => {
+  const page = req.params.page;
+  const data = req.body;
 };

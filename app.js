@@ -11,6 +11,9 @@ const users = require("./middleware/users");
 const admin_panel = require("./routes/admin_panel");
 const about = require("./routes/about");
 const forUsers = require("./routes/forUsers");
+const multer = require("multer");
+const uploadSave = multer({ dest: "public/uploads/save/" });
+const uploadPublic = multer({ dest: "public/uploads/public/" });
 // const validate = require("./middleware/validate");
 
 app.set("views", path.join(__dirname, "views"));
@@ -47,6 +50,8 @@ app.get("/admin-panel/:page/:id/form", admin_panel.submitForm);
 app.post("/admin-panel/:page/:id/post", admin_panel.submit);
 app.get("/admin-panel/:page/:id/changeNews", admin_panel.changeNewsForm);
 app.post("/admin-panel/:page/:id/changeNews", admin_panel.changeNews);
+
+app.post("/admin-panel/:page/uploadFile");
 
 app.get("/admin-panel/:page/:id/delFeed", admin_panel.removeFeed);
 app.get("/admin-panel/:page/jobs", admin_panel.createJobTitleForm);

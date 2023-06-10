@@ -1,0 +1,3 @@
+class Documents {
+  static uploadFile() {}
+}

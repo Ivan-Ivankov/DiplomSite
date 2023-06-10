@@ -5,7 +5,9 @@
       <li><a href="/about/company">О компании</a></li>
       <li><a href="/about/contacts">Контакты</a></li>
       <% if (locals.user) { %>
-      <li><a href="/forUsers/documents">Для сотрудников</a></li>
+      <li>
+        <a href="/forUsers/documents">Для сотрудников</a>
+      </li>
       <% } %>
     </ul>
     <% if (locals.user) { %>

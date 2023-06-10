@@ -1,6 +1,7 @@
 .show-users,
 .news,
-.feeds {
+.feeds,
+.documents {
   position: relative;
   padding: 20px 0 40px 0;
   background-color: #f0f0f0;
@@ -13,7 +14,6 @@
 
 .menu ul {
   position: relative;
-  max-width: 350px;
   display: flex;
   list-style: none;
   z-index: 0;

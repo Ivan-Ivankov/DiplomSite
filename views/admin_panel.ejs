@@ -41,6 +41,7 @@
         <li class="active"><a href="/admin-panel/users">Пользователи</a></li>
         <li><a href="/admin-panel/feed">Вопросы</a></li>
         <li><a href="/admin-panel/news">Новости</a></li>
+        <li><a href="/admin-panel/documents">Документы</a></li>
       </ul>
     </div>
     <% break; case "feed": %>
@@ -49,6 +50,7 @@
         <li><a href="/admin-panel/users">Пользователи</a></li>
         <li class="active"><a href="/admin-panel/feed">Вопросы</a></li>
         <li><a href="/admin-panel/news">Новости</a></li>
+        <li><a href="/admin-panel/documents">Документы</a></li>
       </ul>
     </div>
     <% break; case "news": %>
@@ -57,6 +59,17 @@
         <li><a href="/admin-panel/users">Пользователи</a></li>
         <li><a href="/admin-panel/feed">Вопросы</a></li>
         <li class="active"><a href="/admin-panel/news">Новости</a></li>
+        <li><a href="/admin-panel/documents">Документы</a></li>
+      </ul>
+    </div>
+    <% break; %>
+    <% break; case "documents": %>
+    <div class="menu fs20">
+      <ul>
+        <li><a href="/admin-panel/users">Пользователи</a></li>
+        <li><a href="/admin-panel/feed">Вопросы</a></li>
+        <li<a href="/admin-panel/news">Новости</a></li>
+        <li class="active"><a href="/admin-panel/documents">Документы</a></li>
       </ul>
     </div>
     <% break; } %>
@@ -76,6 +89,12 @@
       <% if (page === "news") { %>
       <!--  -->
       <%- include("./adminPanel/news") -%>
+      <!--  -->
+      <% } %>
+      <!--  -->
+      <% if (page === "documents") { %>
+      <!--  -->
+      <%- include("./adminPanel/documents") -%>
       <!--  -->
       <% }} %>
     </main>
