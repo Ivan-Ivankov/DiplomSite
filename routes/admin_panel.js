@@ -1,6 +1,8 @@
 const User = require("../models/user");
 const Feedback = require("../models/feedback");
 const About = require("../models/about");
+const Documents = require("../models/documents");
+let fs = require("fs");
 
 const id = false;
 const reg = false;
@@ -64,14 +66,12 @@ exports.form = (req, res, next) => {
       });
       break;
     case "documents":
-      About.newsList((err, news) => {
+      Documents.selectAll((err, docs) => {
         if (err) return next(err);
         res.render("admin_panel", {
           title: "Панель админа",
-          news: news,
+          docs: docs,
           page: page,
-          changeId: newsId,
-          id: id,
         });
       });
       break;
@@ -255,6 +255,33 @@ exports.removeFeed = (req, res, next) => {
 };
 
 exports.uploadFile = (req, res, next) => {
-  const page = req.params.page;
-  const data = req.body;
+  const type = req.params.type;
+  const name = req.file.filename;
+  Documents.findByName(name, (err, file) => {
+    if (err) return next(err);
+    if (file) return next();
+    Documents.uploadFile(name, type, (err) => {
+      if (err) return next(err);
+      res.redirect("back");
+    });
+  });
+};
+
+exports.deleteFile = (req, res, next) => {
+  const name = req.query.name;
+  Documents.findByName(name, (err, file) => {
+    if (err) return next(err);
+    if (!file) return next();
+
+    let link = "./public/uploads/" + file.fileType + "/" + file.fileName;
+    console.log(link);
+    fs.unlink(link, (err) => {
+      if (err) return next(err); // не удалось удалить файл
+      console.log("Файл успешно удалён");
+      Documents.deleteFile(name, (err) => {
+        if (err) return next(err);
+        res.redirect("back");
+      });
+    });
+  });
 };

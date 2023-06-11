@@ -12,8 +12,28 @@ const admin_panel = require("./routes/admin_panel");
 const about = require("./routes/about");
 const forUsers = require("./routes/forUsers");
 const multer = require("multer");
-const uploadSave = multer({ dest: "public/uploads/save/" });
-const uploadPublic = multer({ dest: "public/uploads/public/" });
+const uploadSave = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads/save/");
+  },
+  filename: (req, file, cb) => {
+    file.originalname = Buffer.from(file.originalname, "latin1").toString(
+      "utf8"
+    );
+    cb(null, file.originalname);
+  },
+});
+const uploadPublic = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads/public/");
+  },
+  filename: (req, file, cb) => {
+    file.originalname = Buffer.from(file.originalname, "latin1").toString(
+      "utf8"
+    );
+    cb(null, file.originalname);
+  },
+});
 // const validate = require("./middleware/validate");
 
 app.set("views", path.join(__dirname, "views"));
@@ -51,12 +71,24 @@ app.post("/admin-panel/:page/:id/post", admin_panel.submit);
 app.get("/admin-panel/:page/:id/changeNews", admin_panel.changeNewsForm);
 app.post("/admin-panel/:page/:id/changeNews", admin_panel.changeNews);
 
-app.post("/admin-panel/:page/uploadFile");
-
 app.get("/admin-panel/:page/:id/delFeed", admin_panel.removeFeed);
 app.get("/admin-panel/:page/jobs", admin_panel.createJobTitleForm);
 app.post("/admin-panel/:page/jobs", admin_panel.createJobTitle);
 app.get("/admin-panel/:page/jobs/:id/del", admin_panel.deleteTitle);
+
+app.post(
+  "/admin-panel/:page/uploadFile/:type/p",
+  multer({ storage: uploadPublic }).single("publicFile"),
+  admin_panel.uploadFile
+);
+
+app.post(
+  "/admin-panel/:page/uploadFile/:type/s",
+  multer({ storage: uploadSave }).single("saveFile"),
+  admin_panel.uploadFile
+);
+
+app.get("/admin-panel/:page/delFile", admin_panel.deleteFile);
 
 app.get("/admin-panel/:page/register", admin_panel.reg);
 app.get("/login", login.form);

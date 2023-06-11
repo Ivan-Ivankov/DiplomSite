@@ -1,13 +1,80 @@
 <section class="documents">
-  <div class="content">
+  <script>
+    function UwUpublicFile() {
+      let publicFileIn = document
+        .getElementById("publicFile")
+        .value.split("\\")
+        .slice(-1);
+      document.getElementById(
+        "file-name-public"
+      ).innerHTML = `Файл: ${publicFileIn}`;
+    }
+    function UwUsaveFile() {
+      let saveFileIn = document
+        .getElementById("saveFile")
+        .value.split("\\")
+        .slice(-1);
+      document.getElementById(
+        "file-name-save"
+      ).innerHTML = `Файл: ${saveFileIn}`;
+    }
+  </script>
+  <div class="docs">
     <form
-      action="/admin-panel/documents/uploadFile"
+      class="card"
+      action="/admin-panel/documents/uploadFile/public/p"
       method="post"
       enctype="multipart/form-data"
     >
-      <label for="file">Выберите файл</label>
-      <input required type="file" name="file" id="file" />
-      <button type="submit">Загрузить</button>
+      <% docs.forEach((elem) => { if (elem.fileType === "public") {%>
+      <a
+        href="/public/uploads/<%= elem.fileType %>/<%= elem.fileName %>"
+        download
+        >Скачать <%= elem.fileName %></a
+      >
+      <a href="/admin-panel/<%= page %>/delFile?name=<%= elem.fileName %>"
+        >удалить <%= elem.fileName %></a
+      >
+      <% }}) %>
+      <h2>Рабочие файлы</h2>
+      <label class="inp">
+        <input
+          required
+          type="file"
+          name="publicFile"
+          id="publicFile"
+          onchange="UwUpublicFile()"
+        />
+        <span id="file-name-public">Выберите файл</span>
+      </label>
+      <button type="submit">Загрузить в общие файлы</button>
+    </form>
+
+    <form
+      class="card"
+      action="/admin-panel/documents/uploadFile/save/s"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <% docs.forEach((elem) => { if (elem.fileType === "save") {%>
+      <a
+        href="/public/uploads/<%= elem.fileType %>/<%= elem.fileName %>"
+        download
+        ><%= elem.fileName %></a
+      >
+      <% }}) %>
+      <h2>Рабочие файлы</h2>
+      <label class="inp">
+        <input
+          required
+          type="file"
+          name="saveFile"
+          id="saveFile"
+          onchange="UwUsaveFile()"
+        />
+        <span id="file-name-save">Выберите файл</span>
+      </label>
+      <button type="submit">Загрузить в общие файлы</button>
     </form>
   </div>
 </section>

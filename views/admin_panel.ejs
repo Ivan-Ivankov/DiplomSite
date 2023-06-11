@@ -16,6 +16,10 @@
     <% if (page === "news") { %>
     <link rel="stylesheet" href="/css/main-news.css" />
     <% } %>
+    <!--  -->
+    <% if (page === "documents") { %>
+    <link rel="stylesheet" href="/css/main-documents.css" />
+    <% } %>
     <link rel="stylesheet" href="/css/admin-menu.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,13 +66,12 @@
         <li><a href="/admin-panel/documents">Документы</a></li>
       </ul>
     </div>
-    <% break; %>
     <% break; case "documents": %>
     <div class="menu fs20">
       <ul>
         <li><a href="/admin-panel/users">Пользователи</a></li>
         <li><a href="/admin-panel/feed">Вопросы</a></li>
-        <li<a href="/admin-panel/news">Новости</a></li>
+        <li><a href="/admin-panel/news">Новости</a></li>
         <li class="active"><a href="/admin-panel/documents">Документы</a></li>
       </ul>
     </div>
