@@ -12,6 +12,22 @@
   margin: 40px auto;
 }
 
+.menuUser ul {
+  position: relative;
+  display: flex;
+  list-style: none;
+  z-index: 0;
+  max-width: 1440px;
+  margin: 40px auto -40px auto;
+}
+
+.menuUser a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  transition: 0.4s;
+}
+
 .menu ul {
   position: relative;
   display: flex;

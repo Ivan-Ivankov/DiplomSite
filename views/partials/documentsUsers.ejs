@@ -1,16 +1,14 @@
+<div class="menuUser fs20">
+  <ul>
+    <li class="active"><a href="/admin-panel/users">Документы</a></li>
+  </ul>
+</div>
 <section class="documents">
-  <div class="menu">
-    <ul>
-      <a href="/about/company"><li>О компании</li></a>
-      <a href="/about/news"><li>Новости</li></a>
-      <a href="/about/contacts"><li>Контакты</li></a>
-      <a href="/about/documents"><li>Документы</li></a>
-    </ul>
-  </div>
   <div class="documents-content">
     <h2>Доступные документы</h2>
+
     <div class="documents-list fs20">
-      <% docs.forEach((elem) => { if (elem.fileType === "public") {%>
+      <% docs.forEach((elem) => { if (elem.fileType === "save") {%>
       <div class="doc">
         <p><%= elem.fileName %></p>
         <a

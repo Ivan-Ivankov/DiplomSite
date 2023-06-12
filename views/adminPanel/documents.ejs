@@ -20,61 +20,86 @@
     }
   </script>
   <div class="docs">
-    <form
-      class="card"
-      action="/admin-panel/documents/uploadFile/public/p"
-      method="post"
-      enctype="multipart/form-data"
-    >
-      <% docs.forEach((elem) => { if (elem.fileType === "public") {%>
-      <a
-        href="/public/uploads/<%= elem.fileType %>/<%= elem.fileName %>"
-        download
-        >Скачать <%= elem.fileName %></a
+    <div class="iii">
+      <div class="docs-list">
+        <% docs.forEach((elem) => { if (elem.fileType === "public") {%>
+        <div class="document fs20">
+          <div class="name"><p><%= elem.fileName %></p></div>
+          <div class="knopki">
+            <a
+              href="/public/uploads/<%= elem.fileType %>/<%= elem.fileName %>"
+              download
+              >Скачать</a
+            >
+            <a href="/admin-panel/<%= page %>/delFile?name=<%= elem.fileName %>"
+              >удалить
+            </a>
+          </div>
+        </div>
+        <% }}) %>
+      </div>
+      <form
+        class="card"
+        action="/admin-panel/documents/uploadFile/public/p"
+        method="post"
+        enctype="multipart/form-data"
       >
-      <a href="/admin-panel/<%= page %>/delFile?name=<%= elem.fileName %>"
-        >удалить <%= elem.fileName %></a
-      >
-      <% }}) %>
-      <h2>Рабочие файлы</h2>
-      <label class="inp">
-        <input
-          required
-          type="file"
-          name="publicFile"
-          id="publicFile"
-          onchange="UwUpublicFile()"
-        />
-        <span id="file-name-public">Выберите файл</span>
-      </label>
-      <button type="submit">Загрузить в общие файлы</button>
-    </form>
+        <h2>Общие файлы</h2>
+        <label class="inp">
+          <input
+            required
+            type="file"
+            name="publicFile"
+            id="publicFile"
+            onchange="UwUpublicFile()"
+          />
+          <p class="fs20" id="file-name-public">Выберите файл</p>
+        </label>
+        <button type="submit">Загрузить в общие файлы</button>
+      </form>
+    </div>
 
-    <form
-      class="card"
-      action="/admin-panel/documents/uploadFile/save/s"
-      method="post"
-      enctype="multipart/form-data"
-    >
-      <% docs.forEach((elem) => { if (elem.fileType === "save") {%>
-      <a
-        href="/public/uploads/<%= elem.fileType %>/<%= elem.fileName %>"
-        download
-        ><%= elem.fileName %></a
+    <div class="iii">
+      <div class="docs-list">
+        <% docs.forEach((elem) => { if (elem.fileType === "save") {%>
+        <div class="document fs20">
+          <div class="name"><p><%= elem.fileName %></p></div>
+          <div class="knopki">
+            <a
+              href="/public/uploads/<%= elem.fileType %>/<%= elem.fileName %>"
+              download
+              >Скачать</a
+            >
+            <a href="/admin-panel/<%= page %>/delFile?name=<%= elem.fileName %>"
+              >удалить
+            </a>
+          </div>
+        </div>
+
+        <% }}) %>
+      </div>
+      <form
+        class="card"
+        action="/admin-panel/documents/uploadFile/save/s"
+        method="post"
+        enctype="multipart/form-data"
       >
-      <% }}) %>
-      <h2>Рабочие файлы</h2>
-      <label class="inp">
-        <input
-          required
-          type="file"
-          name="saveFile"
-          id="saveFile"
-          onchange="UwUsaveFile()"
-        />
-        <span id="file-name-save">Выберите файл</span>
-      </label>
-      <button type="submit">Загрузить в общие файлы</button>
-    </form>
+        <h2>Рабочие файлы</h2>
+        <label class="inp">
+          <input
+            required
+            type="file"
+            name="saveFile"
+            id="saveFile"
+            onchange="UwUsaveFile()"
+          />
+          <p id="file-name-save" class="fs20">Выберите файл</p>
+          <button class="fs20" type="submit">Загрузить в рабочие файлы</button>
+        </label>
+      </form>
+    </div>
   </div>
 </section>
+<% if (locals.messages) {%> <% messages.forEach((message) => { %>
+<h2 class="center err <%= message.type %>"><%= message.string %></h2>
+<% }) %> <% removeMessages() %> <% } %>

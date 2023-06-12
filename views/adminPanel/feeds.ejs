@@ -8,36 +8,39 @@
         <p>Сообщение</p>
       </div>
     </div>
-    <% feeds.forEach((feed)=>{ %>
-    <div class="feeds-content">
-      <div class="innerText">
-        <div class="">
-          <p class="fs18 semi-bold" style="margin-bottom: 20px">
-            От пользователя: <%= feed.name %>.
-          </p>
-          <p class="fs18 semi-bold">Текст сообщения:</p>
-          <pre>
+    <div class="over">
+      <% feeds.forEach((feed)=>{ %>
+      <div class="feeds-content">
+        <div class="innerText">
+          <div class="">
+            <p class="fs18 semi-bold" style="margin-bottom: 20px">
+              От пользователя: <%= feed.name %>.
+            </p>
+            <p class="fs18 semi-bold">Текст сообщения:</p>
+            <pre>
 <%= feed.textarea %>
-
-С уважением <%= feed.name %>.
-          </pre>
+    
+    С уважением <%= feed.name %>.
+              </pre
+            >
+          </div>
+          <div class="inf">
+            <div class="">
+              <p class="fs18 semi-bold">Телефон / Email</p>
+              <p><%= feed.number %></p>
+              <p><%= feed.email %></p>
+            </div>
+            <div class="">
+              <p class="fs18 semi-bold">Дата записи</p>
+              <p><%= feed.date %></p>
+            </div>
+          </div>
         </div>
-        <div class="inf">
-          <div class="">
-            <p class="fs18 semi-bold">Телефон / Email</p>
-            <p><%= feed.number %></p>
-            <p><%= feed.email %></p>
-          </div>
-          <div class="">
-            <p class="fs18 semi-bold">Дата записи</p>
-            <p><%= feed.date %></p>
-          </div>
+        <div class="delete">
+          <a href="/admin-panel/feed/<%= feed.id %>/delFeed">Удалить</a>
         </div>
       </div>
-      <div class="delete">
-        <a href="/admin-panel/feed/<%= feed.id %>/delFeed">Удалить</a>
-      </div>
+      <% }) %>
     </div>
-    <% }) %>
   </div>
 </section>

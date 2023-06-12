@@ -34,7 +34,7 @@ class About {
           sql,
           user.name,
           user.seminame,
-          user.role,
+          user.jobTitle,
           data.theme,
           data.text,
           now,

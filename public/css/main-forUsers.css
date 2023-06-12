@@ -36,12 +36,16 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin-left: 60px;
+  margin-left: 40px;
   width: 100%;
 }
 
 .content hr {
   margin-left: 8px;
+}
+
+.head {
+  width: 100%;
 }
 
 .content-text:hover {
@@ -50,6 +54,7 @@
 
 .way {
   margin-bottom: 20px;
+  display: flex;
 }
 
 .way a {
@@ -58,8 +63,21 @@
   color: #00a7cc;
 }
 
+.knop {
+  display: flex;
+  width: 104%;
+  justify-content: space-between;
+}
+
 .content-text li {
   margin-left: 60px;
+}
+
+.overflo {
+  width: 100%;
+  padding: 20px;
+  overflow: auto;
+  max-height: 600px;
 }
 
 .content-text {
@@ -72,6 +90,7 @@
 .text-area {
   margin-left: 10px;
   max-width: 1040px;
+  margin-bottom: 50px;
 }
 
 .news-text {

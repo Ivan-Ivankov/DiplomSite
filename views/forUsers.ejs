@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <link rel="stylesheet" href="/css/main-for.css" />
+    <link rel="stylesheet" href="/css/admin-menu.css" />
+    <link rel="stylesheet" href="/css/forUsers-docs.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +22,7 @@
       <!--  -->
       <section class="forUsers">
         <div class="forUsers-content">
-          <div class="menu">
+          <!-- <div class="menu">
             <ul>
               <a href="/forUsers/profile/<%= locals.user.login %>"
                 ><li>Профиль</li></a
@@ -29,7 +30,8 @@
               <a href="/forUsers/documents"><li>Документы</li></a>
               <a href="/forUsers/chat"><li>Чат</li></a>
             </ul>
-          </div>
+          </div> -->
+
           <!-- Если о компании -->
           <% if (page === "profile") { %>
           <!--  -->
@@ -40,7 +42,7 @@
           <!-- Если новости -->
           <% if (page === "documents") { %>
           <!--  -->
-          <%- include("./partials/documents") -%>
+          <%- include("./partials/documentsUsers") -%>
           <!--  -->
           <% } %>
 

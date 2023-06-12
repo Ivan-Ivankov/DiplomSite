@@ -16,6 +16,10 @@
     <% if (page === "contacts") { %>
     <link rel="stylesheet" href="/css/main-contacts.css" />
     <% } %>
+    <!--  -->
+    <% if (page === "documents") { %>
+      <link rel="stylesheet" href="/css/sss.css" />
+      <% } %>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,6 +40,7 @@
               <a href="/about/company"><li>О компании</li></a>
               <a href="/about/news"><li>Новости</li></a>
               <a href="/about/contacts"><li>Контакты</li></a>
+              <a href="/about/documents"><li>Документы</li></a>
             </ul>
           </div>
           <!--  -->
@@ -52,10 +57,18 @@
                 <a href="/about/company"><li>О компании</li></a>
                 <a href="/about/news"><li>Новости</li></a>
                 <a href="/about/contacts"><li>Контакты</li></a>
+                <a href="/about/documents"><li>Документы</li></a>
               </ul>
             </div>
       <!--  -->
       <%- include("./partials/news") -%>
+      <!--  -->
+      <% } %>
+
+      <% if (page === "documents") { %>
+
+      <!--  -->
+      <%- include("./partials/documents") -%>
       <!--  -->
       <% } %>
 

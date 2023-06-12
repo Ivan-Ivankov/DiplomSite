@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const forUsersUwU = require("../models/forUsersUwU");
+const Documents = require("../models/documents");
 
 const id = 0;
 
@@ -50,9 +51,13 @@ exports.form = (req, res, next) => {
       });
       break;
     case "documents":
-      res.render("forUsers", {
-        title: "Для сотрудников",
-        page: page,
+      Documents.selectAll((err, docs) => {
+        if (err) return next(err);
+        res.render("forUsers", {
+          title: "Для сотрудников",
+          docs: docs,
+          page: page,
+        });
       });
       break;
     case "chat":

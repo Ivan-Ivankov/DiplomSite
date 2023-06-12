@@ -259,11 +259,15 @@ exports.uploadFile = (req, res, next) => {
   const name = req.file.filename;
   Documents.findByName(name, (err, file) => {
     if (err) return next(err);
-    if (file) return next();
-    Documents.uploadFile(name, type, (err) => {
-      if (err) return next(err);
+    if (!file) {
+      Documents.uploadFile(name, type, (err) => {
+        if (err) return next(err);
+        res.redirect("back");
+      });
+    } else {
+      res.error("Такой файл уже есть на сервере.");
       res.redirect("back");
-    });
+    }
   });
 };
 
@@ -274,9 +278,8 @@ exports.deleteFile = (req, res, next) => {
     if (!file) return next();
 
     let link = "./public/uploads/" + file.fileType + "/" + file.fileName;
-    console.log(link);
     fs.unlink(link, (err) => {
-      if (err) return next(err); // не удалось удалить файл
+      if (err) return next(err);
       console.log("Файл успешно удалён");
       Documents.deleteFile(name, (err) => {
         if (err) return next(err);

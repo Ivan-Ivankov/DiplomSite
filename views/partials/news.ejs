@@ -1,62 +1,78 @@
 <% if (locals.user) { %>
 
     <div class="content">
-      <div class="way center fs18">
-        <a href="/">Главная</a>
-        <p class="gray">/ <%= title %> / Новости</p>
-      </div>
-      <p class="semi-bold fs24">Новости</p>
-      <hr />
-
-      <% news.reverse().forEach((elem) => { %>
-      <div class="content-text">
-        <% if (locals.user.role === "admin" || locals.user.role === "moderator")
-        { %>
-        <a
-          class="krest-news"
-          title="Удалить"
-          href="/about/news/<%= elem.id %>/del"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            version="1.1"
-            id="Capa_1"
-            x="0px"
-            y="0px"
-            viewBox="0 0 512.021 512.021"
-            style="enable-background: new 0 0 512.021 512.021"
-            xml:space="preserve"
-            width="16"
-            height="16"
-          >
-            <g>
-              <path
-                d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"
-              />
-            </g>
-          </svg>
-        </a>
-        <% } %>
-        <p class="who semi-bold fs20">
-          От: <%= elem.name %> <%= elem.seminame %> / <% if (elem.role === "admin") { %>
-          <span class="red fs18"><%= elem.role %></span>
-          <% } else { %>
-          <span class="green fs18"><%= elem.role %></span>
-          <% } %>
-        </p>
-        <div class="text-area">
-          <p class="news-theme semi-bold"><%= elem.theme %></p>
-          <p class="news-text"><%= elem.text %></p>
-          <p class="news-time fs14"><%= elem.time %></p>
+      <div class="head">
+        <div class="way fs18">
+          <a href="/">Главная</a>
+          <p class="gray">/ <%= title %> / Новости</p>
+        </div>
+        <div class="knop">
+          <div class="l">
+            <p class="semi-bold knop fs24">Новости </p>
+            <hr />
+          </div>
+          
+          <% if (locals.user.role === "admin" || locals.user.role ===
+            "moderator") { %>
+              <div class="r">
+                <a class=" btn" href="/about/news/<%= locals.user.id %>"
+                  >Создать новость</a
+                >
+              </div>
+            <% } %>
         </div>
       </div>
       
-      <% }) %>
-      <% if (locals.user.role === "admin" || locals.user.role === "moderator") {
-        %>
-        <a class="btn" href="/about/news/<%= locals.user.id %>">Создать новость</a>
-        <% } %>
+      
+      <div class="overflo">
+        <% news.reverse().forEach((elem) => { %>
+          <div class="content-text">
+            <% if (locals.user.role === "admin" || locals.user.role === "moderator")
+            { %>
+            <a
+              class="krest-news"
+              title="Удалить"
+              href="/about/news/<%= elem.id %>/del"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                version="1.1"
+                id="Capa_1"
+                x="0px"
+                y="0px"
+                viewBox="0 0 512.021 512.021"
+                style="enable-background: new 0 0 512.021 512.021"
+                xml:space="preserve"
+                width="16"
+                height="16"
+              >
+                <g>
+                  <path
+                    d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"
+                  />
+                </g>
+              </svg>
+            </a>
+            <% } %>
+            <p class="who semi-bold fs20">
+              От: <%= elem.name %> <%= elem.seminame %> / <% if (elem.role === "Ген. Директор") { %>
+                <span class="red fs18"><%= elem.role %></span>
+                <% } else { %>
+                <span class="green fs18"><%= elem.role %></span>
+                <% } %>
+            </p>
+            <div class="text-area">
+              <p class="news-theme semi-bold"><%= elem.theme %></p>
+              <p class="news-text"><%= elem.text %></p>
+              <p class="news-time fs14"><%= elem.time %></p>
+            </div>
+          </div>
+          
+          <% }) %>
+      </div>
+      
+      
       <!--  -->
       <% if (id) { %>
       <section class="formSubmit">
@@ -96,30 +112,41 @@
       <!--  -->
       <% } else { %>
       
-          <div class="content">
-            <div class="way center fs18">
+        <div class="content">
+          <div class="head">
+            <div class="way fs18">
               <a href="/">Главная</a>
               <p class="gray">/ <%= title %> / Новости</p>
             </div>
-            <p class="semi-bold fs24">Новости</p>
-            <hr />
-
-            <% news.reverse().forEach((elem) => { %>
-            <div class="content-text">
-              <p class="who semi-bold fs20">
-                От: <%= elem.name %> / <% if (elem.role === "admin") { %>
-                <span class="red fs18"><%= elem.role %></span>
-                <% } else { %>
-                <span class="green fs18"><%= elem.role %></span>
-                <% } %>
-              </p>
-              <div class="text-area">
-                <p class="news-theme semi-bold"><%= elem.theme %></p>
-                <p class="news-text"><%= elem.text %></p>
-                <p class="news-time fs14"><%= elem.time %></p>
+            <div class="knop">
+              <div class="l">
+                <p class="semi-bold knop fs24">Новости </p>
+                <hr />
               </div>
+          
             </div>
-            <% }) %>
+          </div>
+
+          <div class="overflo">
+            <% news.reverse().forEach((elem) => { %>
+              <div class="content-text">
+        
+                <p class="who semi-bold fs20">
+                  От: <%= elem.name %> <%= elem.seminame %> / <% if (elem.role === "Ген. Директор") { %>
+                    <span class="red fs18"><%= elem.role %></span>
+                    <% } else { %>
+                    <span class="green fs18"><%= elem.role %></span>
+                    <% } %>
+                </p>
+                <div class="text-area">
+                  <p class="news-theme semi-bold"><%= elem.theme %></p>
+                  <p class="news-text"><%= elem.text %></p>
+                  <p class="news-time fs14"><%= elem.time %></p>
+                </div>
+              </div>
+              
+              <% }) %>
+          </div>
           </div>
         </div>
       </section>

@@ -29,8 +29,9 @@ class ForUsersUwU {
     User.findByID(id, (err, user) => {
       if (err) return next(err);
       if (!user) return next();
+      console.log(user);
       db.serialize(() => {
-        db.run(sql, user.name, user.role, data.theme, data.text, now, cb);
+        db.run(sql, user.name, user.job_title, data.theme, data.text, now, cb);
       });
     });
   }

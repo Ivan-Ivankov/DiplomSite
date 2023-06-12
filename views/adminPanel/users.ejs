@@ -322,7 +322,10 @@
     </a>
 
     <h2 align="center">Список должностей</h2>
-    <div class="jobsList" style="overflow: auto; max-height: 100px">
+    <div
+      class="jobsList"
+      style="overflow: auto; max-height: 120px; padding: 0 16px; margin: 6px 0"
+    >
       <% jobTitles.forEach((job)=>{ %>
       <div
         class="list"
@@ -350,7 +353,7 @@
       <% removeMessages() %>
       <!--  -->
       <% } %>
-      <p class="semi-bold fs24">Создание должности</p>
+      <p class="semi-bold fs24">Новая должность</p>
 
       <hr />
       <input
@@ -358,7 +361,7 @@
         class="form-control"
         name="jobTitle"
         id="inputJobTitle"
-        placeholder="Должность"
+        placeholder="Название должности"
         required
       />
 

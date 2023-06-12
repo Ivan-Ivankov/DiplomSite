@@ -1,8 +1,8 @@
 .docs {
   display: flex;
-  max-width: 1040px;
+  max-width: 1440px;
   margin: auto;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .card {
@@ -17,7 +17,112 @@
   display: none;
 }
 
-.box {
-  padding: 5px 10px;
-  background-color: aliceblue;
+.docs-list {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  max-height: 500px;
+  /* padding: 0 14px; */
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid gray;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 1px 5px rgb(165, 165, 165);
+}
+
+.document {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 3px 0;
+}
+
+.document a {
+  padding: 5px;
+  border-radius: 10px;
+  transition: 0.4s;
+  text-decoration: none;
+  list-style: none;
+  color: #00a7cc;
+}
+
+.document a:hover {
+  background-color: #e0e0e0;
+}
+
+.iii {
+  max-width: 800px;
+}
+
+#file-name-save {
+  padding: 10px 0;
+  border-radius: 10px;
+  width: 100%;
+  margin: auto;
+  transition: all 0.4s;
+}
+
+#file-name-save:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+#file-name-public {
+  padding: 10px 0;
+  border-radius: 10px;
+  width: 100%;
+  margin: auto;
+  transition: all 0.4s;
+}
+
+#file-name-public:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+form h2 {
+  background-color: #00a7cc;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  margin: auto;
+  border: 1px solid gray;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 5px;
+  box-shadow: 0 -1px 5px #00a7cc;
+}
+
+form .inp {
+  width: 100%;
+  text-align: center;
+  /* padding: 10px 14px; */
+  margin: auto;
+}
+
+form button {
+  position: relative;
+  margin-top: 5px;
+  padding: 10px 15px;
+  background-color: #00a7cc;
+  border-radius: 10px;
+  border: none;
+  z-index: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  box-shadow: 0 1px 5px rgb(165, 165, 165);
+  transition: all 0.4s;
+}
+
+form button:hover {
+  background-color: #00809c;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+form button:active {
+  background-color: #003e4d;
+  transform: scale(1);
 }

@@ -1,5 +1,5 @@
 const User = require("../models/user");
-
+const Documents = require("../models/documents");
 const About = require("../models/about");
 
 const id = null;
@@ -60,6 +60,16 @@ exports.form = (req, res, next) => {
       res.render("about", {
         title: "О компании",
         page: page,
+      });
+      break;
+    case "documents":
+      Documents.selectAll((err, docs) => {
+        if (err) return next(err);
+        res.render("about", {
+          title: "О компании",
+          docs: docs,
+          page: page,
+        });
       });
       break;
   }
