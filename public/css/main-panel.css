@@ -103,6 +103,17 @@ a {
   text-align: center;
 }
 
+.log-pass {
+  display: flex;
+}
+
+.log-pass div {
+  display: flex;
+  flex-direction: column;
+  margin: 0 6px;
+  text-align: center;
+}
+
 .register {
   position: absolute;
   width: 100%;

@@ -2,37 +2,45 @@
 
 <section class="show-users">
   <div class="show-users-content center">
+    <div class="spisok" style="overflow: auto; height: 600px; padding: 0 20px;">
     <table cellspacing="0" class="users">
       <tr class="first semi-bold fs24">
         <td>Список сотрудников</td>
       </tr>
       <tr class="semi-bold fs20">
         <td style="padding: 10px 20px">id</td>
-        <td>ФИО сотрудника</td>
-        <td>Логин</td>
-        <td>Email</td>
+        <td style="padding: 5px">ФИО сотрудника</td>
+        <td style="padding: 5px">Логин</td>
+        <td style="padding: 5px">Email</td>
         <td style="max-width: 120px; padding: 5px">Роль</td>
         <td style="max-width: 120px; padding: 5px">Должность</td>
         <td style="padding: 5px">Дата создания</td>
-        <td style="padding: 5px">Дополнительно</td>
+        <td>Дополнительно</td>
       </tr>
-      <% admin_panel.forEach((user)=>{ %>
-      <!--  -->
-      <tr class="fs18">
-        <td style="padding: 10px 20px" id="sss"><%= user.id %></td>
-        <td><%= user.seminame %> <%= user.name %> <%= user.surname %></td>
-        <td><%= user.login %></td>
-        <td><%= user.email %></td>
-        <td style="max-width: 120px; padding: 5px"><%= user.role %></td>
-        <td style="max-width: 120px; padding: 5px"><%= user.jobTitle %></td>
-        <td style="padding: 5px"><%= user.time %></td>
-        <td style="padding: 5px">
-          <a href="/admin-panel/<%= page %>/<%= user.id %>/delUser">Удалить</a>
-          /
-          <a href="/admin-panel/<%= page %>/<%= user.id %>/change">Изменить</a>
-        </td>
-      </tr>
-      <% }) %>
+
+      
+        <% admin_panel.forEach((user)=>{ %>
+        <!--  -->
+        <tr class="fs18">
+          <td style="padding: 10px 20px" id="sss"><%= user.id %></td>
+          <td style="padding: 5px"><%= user.seminame %> <%= user.name %> <%= user.surname %></td>
+          <td style="padding: 5px"><%= user.login %></td>
+          <td style="padding: 5px"><%= user.email %></td>
+          <td style="max-width: 120px; padding: 5px"><%= user.role %></td>
+          <td style="max-width: 120px; padding: 5px"><%= user.jobTitle %></td>
+          <td style="padding: 5px"><%= user.time %></td>
+          <td style="width: 200px;">
+            <a href="/admin-panel/<%= page %>/<%= user.id %>/delUser"
+              >Удалить</a
+            >
+            /
+            <a href="/admin-panel/<%= page %>/<%= user.id %>/change"
+              >Изменить</a
+            >
+          </td>
+        </tr>
+        <% }) %>
+      </div>
     </table>
     <div style="display: flex">
       <button class="create btn center">
@@ -116,26 +124,32 @@
         value="<%= user.surname %>"
         placeholder="Отчетсво"
       />
+      <div class="log-pass">
+        <div>
+          <label for="inputName">Логин</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            name="user[login]"
+            id="inputName"
+            placeholder="Логин"
+            value="<%= user.login %>"
+          />
+        </div>
 
-      <label for="inputName">Логин</label>
-      <input
-        required
-        type="text"
-        class="form-control"
-        name="user[login]"
-        id="inputName"
-        placeholder="Логин"
-        value="<%= user.login %>"
-      />
-      <label for="inputPass">Пароль</label>
-      <input
-        type="password"
-        class="form-control"
-        name="user[password]"
-        id="inputPass"
-        placeholder="Password"
-        required
-      />
+        <div>
+          <label for="inputPass">Пароль</label>
+          <input
+            type="password"
+            class="form-control"
+            name="user[password]"
+            id="inputPass"
+            placeholder="Password"
+            required
+          />
+        </div>
+      </div>
       <label for="inputPass">Email</label>
       <input
         type="email"
@@ -244,25 +258,32 @@
         id="inputSurName"
         placeholder="Отчетсво"
       />
-      <label for="inputLogin">Логин</label>
-      <input
-        required
-        type="text"
-        class="form-control"
-        name="user[login]"
-        id="inputLogin"
-        value="user<%= admin_panel.at(-1).id + 1 %>"
-        placeholder="Логин"
-      />
-      <label for="inputPass">Пароль</label>
-      <input
-        type="password"
-        class="form-control"
-        name="user[password]"
-        id="inputPass"
-        placeholder="Пароль"
-        required
-      />
+      <div class="log-pass">
+        <div>
+          <label for="inputLogin">Логин</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            name="user[login]"
+            id="inputLogin"
+            value="user<%= admin_panel.at(-1).id + 1 %>"
+            placeholder="Логин"
+          />
+        </div>
+        <div>
+          <label for="inputPass">Пароль</label>
+          <input
+            type="password"
+            class="form-control"
+            name="user[password]"
+            id="inputPass"
+            placeholder="Пароль"
+            required
+          />
+        </div>
+      </div>
+
       <label for="inputEmail">Email</label>
       <input
         type="email"

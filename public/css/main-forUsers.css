@@ -14,6 +14,57 @@
   white-space: nowrap;
 }
 
+.documents {
+  position: relative;
+  padding: 20px 0 40px 0;
+  background-color: #f0f0f0;
+  border-radius: 0 10px 10px 10px;
+  box-shadow: 0 2px 3px rgb(165, 165, 165);
+  z-index: 1;
+  max-width: 1440px;
+  margin: 40px auto;
+}
+
+.menuUser ul {
+  position: relative;
+  display: flex;
+  list-style: none;
+  z-index: 0;
+  max-width: 1440px;
+  margin: 40px auto -40px auto;
+}
+
+.menuUser a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  transition: 0.4s;
+}
+
+.active {
+  /* margin: 4px 0; */
+  padding: 4px 0;
+  margin-bottom: -5px;
+  border-radius: 10px 10px 0 0;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 3px rgb(165, 165, 165);
+  animation: aboba 0.4s;
+  transform: translateY(-5px);
+}
+
+@keyframes aboba {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+
+a:hover + .active {
+  animation: aboba2 0.4s;
+}
+
 .menu li {
   padding: 10px 40px 10px 10px;
   border: 1px solid #dbdbdb;

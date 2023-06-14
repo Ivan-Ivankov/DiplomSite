@@ -9,12 +9,12 @@
   </div>
   <div class="documents-content">
     <h2>Доступные документы</h2>
-    <div class="documents-list fs20">
+    <div class="documents-list fs18">
       <% docs.forEach((elem) => { if (elem.fileType === "public") {%>
       <div class="doc">
         <p><%= elem.fileName %></p>
         <a
-          class="btn fs20"
+          class="btn fs18"
           href="/public/uploads/<%= elem.fileType %>/<%= elem.fileName %>"
           download
           >Скачать</a

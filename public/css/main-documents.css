@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 800px;
 }
 
 #saveFile,
@@ -23,18 +24,25 @@
   overflow: auto;
   max-height: 500px;
   /* padding: 0 14px; */
-  width: 100%;
+  width: 600px;
   background-color: #ffffff;
   border: 1px solid gray;
   border-radius: 10px 10px 0 0;
   box-shadow: 0 1px 5px rgb(165, 165, 165);
+  padding: 10px 0;
 }
 
 .document {
   display: flex;
-  width: 100%;
+
   justify-content: space-between;
   margin: 3px 0;
+  padding: 0 10px;
+}
+
+.knopki {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .document a {
@@ -83,7 +91,7 @@
 form h2 {
   background-color: #00a7cc;
   color: #ffffff;
-  width: 100%;
+  width: 600px;
   text-align: center;
   padding: 10px 0;
   margin: auto;
