@@ -112,5 +112,22 @@
 
 .partners-content {
   flex-direction: column;
-  height: 220px;
+  height: 360px;
+}
+
+.logotypes {
+  display: flex;
+  align-items: center;
+}
+
+.logotypes img {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 0 40px 20px 40px;
+  transition: all 0.4s;
+}
+
+.logotypes img:hover {
+  transform: translateY(-20px);
+  filter: brightness(130%);
 }

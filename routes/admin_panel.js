@@ -280,7 +280,6 @@ exports.deleteFile = (req, res, next) => {
     let link = "./public/uploads/" + file.fileType + "/" + file.fileName;
     fs.unlink(link, (err) => {
       if (err) return next(err);
-      console.log("Файл успешно удалён");
       Documents.deleteFile(name, (err) => {
         if (err) return next(err);
         res.redirect("back");

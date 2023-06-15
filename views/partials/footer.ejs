@@ -4,6 +4,7 @@
       <p class="semi-bold fs24">Есть вопросы?</p>
       <p class="gray">Отправьте заявку и мы перезвоним в течении 30 минут.</p>
       <hr />
+
       <form class="feedback-form center" action="/feedback" method="post">
         <div class="form-up center">
           <input
@@ -11,21 +12,22 @@
             class="form-name"
             name="name"
             required
-            placeholder="Имя"
+            placeholder="Ваше имя"
           />
           <input
             type="text"
-            class="form-number"
             name="number"
+            id="phone"
+            maxlength="16"
             required
-            placeholder="Телефон"
+            placeholder="+7(___)___-__-__"
           />
           <input
             type="email"
             class="form-email"
             name="email"
             required
-            placeholder="Email"
+            placeholder="Email@example.com"
           />
         </div>
         <div class="form-down center">
@@ -36,8 +38,40 @@
             placeholder="Ваше сообщение..."
           ></textarea>
         </div>
-        <button class="btn" type="submit">Отправить</button>
+        <button class="btn" type="submit" id="btn" onclick="">Отправить</button>
       </form>
+      <script>
+        document.querySelector("#phone").onkeydown = function (e) {
+          inputphone(e, document.querySelector("#phone"));
+        };
+        function inputphone(e, phone) {
+          function stop(evt) {
+            evt.preventDefault();
+          }
+          let key = e.key,
+            v = phone.value;
+          not = key.replace(/([0-9])/, 1);
+
+          if (not == 1 || "Backspace" === not) {
+            if ("Backspace" != not) {
+              if (v.length < 3 || v === "") {
+                phone.value = "+7(";
+              }
+              if (v.length === 6) {
+                phone.value = v + ")";
+              }
+              if (v.length === 10) {
+                phone.value = v + "-";
+              }
+              if (v.length === 13) {
+                phone.value = v + "-";
+              }
+            }
+          } else {
+            stop(e);
+          }
+        }
+      </script>
     </div>
   </section>
   <section class="map">

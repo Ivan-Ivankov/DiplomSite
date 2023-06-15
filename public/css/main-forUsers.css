@@ -165,7 +165,8 @@ a:hover + .active {
 }
 
 .btn {
-  margin-top: 20px;
+  margin: 20px auto 0 auto;
+  max-width: 260px;
   padding: 10px 15px;
   background-color: #00a7cc;
   border-radius: 10px;
