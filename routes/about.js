@@ -74,3 +74,12 @@ exports.form = (req, res, next) => {
       break;
   }
 };
+
+exports.product = (req, res, next) => {
+  const numb = req.query.numb;
+  console.log(numb);
+  res.render("partials/product", {
+    title: "Продукт",
+    numb: numb,
+  });
+};

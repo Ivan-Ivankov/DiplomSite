@@ -15,6 +15,23 @@
     />
   </head>
   <body>
+    <a
+  class="goUp"
+  href="#head"
+  style="position: fixed; bottom: 80px; right: 40px; z-index: 10"
+  aria-placeholder="Вверх"
+  ><svg
+    xmlns="http://www.w3.org/2000/svg"
+    id="Outline"
+    viewBox="0 0 24 24"
+    width="80"
+    height="80"
+  >
+    <path
+      d="M17.71,9.88l-4.3-4.29a2,2,0,0,0-2.82,0L6.29,9.88a1,1,0,0,0,0,1.41,1,1,0,0,0,1.42,0L11,8V19a1,1,0,0,0,2,0V8l3.29,3.29a1,1,0,1,0,1.42-1.41Z"
+    />
+  </svg>
+</a>
     <%- include("./partials/header") -%>
     <main> 
       <section class="products">
@@ -22,38 +39,38 @@
         <div class="product">
           <img src="img/Blocks.png" alt="" />
           <p class="product-name semi-bold fs20">Бетоные блоки</p>
-          <p class="product-info gray">- Хорошее качество <br>- Быстрое производство</p>
-          <a href="/?id=9"><button class="btn">Подробности</button></a>
+          <p class="product-info gray" style="margin-bottom: 60px;">- Хорошее качество <br>- Быстрое производство</p>
+          
         </div>
         <div class="product">
           <img src="img/Zabor.png" alt="" />
           <p class="product-name semi-bold fs20">Заборы</p>
-          <p class="product-info gray">- Хорошее качество <br>- Быстрое производство</p>
-          <a href="#"><button class="btn">Подробности</button></a>
+          <p class="product-info gray" style="margin-bottom: 60px;">- Хорошее качество <br>- Быстрое производство</p>
+          
         </div>
         <div class="product">
           <img src="img/Svai.png" alt="" />
           <p class="product-name semi-bold fs20">Сваи</p>
-          <p class="product-info gray">- Хорошее качество <br>- Быстрое производство</p>
-          <a href="#"><button class="btn">Подробности</button></a>
+          <p class="product-info gray" style="margin-bottom: 60px;">- Хорошее качество <br>- Быстрое производство</p>
+          
         </div>
         <div class="product">
           <img src="img/Pliti.png" alt="" />
           <p class="product-name semi-bold fs20">Плиты перекрытия</dp>
-            <p class="product-info gray">- Хорошее качество <br>- Быстрое производство</p>
-            <a href="#"><button class="btn">Подробности</button></a>
+            <p class="product-info gray" style="margin-bottom: 60px;"> - Хорошее качество <br>- Быстрое производство</p>
+            
         </div>
         <div class="product">
           <img src="img/Borduri.png" alt="" />
           <p class="product-name semi-bold fs20">Бордюры</p>
-          <p class="product-info gray">- Хорошее качество <br>- Быстрое производство</p>
-          <a href="#"><button class="btn">Подробности</button></a>
+          <p class="product-info gray" style="margin-bottom: 60px;">- Хорошее качество <br>- Быстрое производство</p>
+          
         </div>
         <div class="product">
           <img src="img/Kolca.png" alt="" />
           <p class="product-name semi-bold fs20">Кольца</p>
-          <p class="product-info gray">- Хорошее качество <br>- Быстрое производство</p>
-          <a href="#"><button class="btn">Подробности</button></a>
+          <p class="product-info gray" style="margin-bottom: 60px;">- Хорошее качество <br>- Быстрое производство</p>
+          
         </div>
       </div>
       </section>
@@ -116,7 +133,7 @@
         <div class="partners-content center">
           <p class="semi-bold fs24">Наши партнёры</p>
           <hr>
-          <div class="logotypes">
+          <div id="vopr" class="logotypes">
             <a href="https://www.center-omega.ru/"><img src="/public/img/omega.png" alt=""></a>
             <a href="https://esgroup.ru/"><img style="filter: brightness(50%);" src="/public/img/evrostroy.png" alt=""></a>
             <a href="https://shelf.su/"><img src="/public/img/SHELF.png" alt=""></a>

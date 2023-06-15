@@ -55,6 +55,8 @@ app.get("/", (req, res) => {
 app.get("/forUsers/:page", forUsers.form);
 app.get("/forUsers/:page/:login", forUsers.form);
 
+app.get("/product", about.product);
+
 app.get("/about/:page", about.form);
 app.get("/about/:page/:id", about.submitForm);
 app.get("/about/:page/:id/del", about.removeNews);
